@@ -1,0 +1,481 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Defeasible Conitions in Answer Set Programming</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header" class="alt">
+					<h1>Defeasible Conitions in Answer Set Programming</h1>
+					<p>A Computer Science Honours project exploring an algorithmic definition of KLM-style defeasible reasoning for Answer Set Programming</a>.</p>
+
+					<span class="image fit"><picture>
+					  <source srcset="images/comic.png" media="(min-width: 800px)">
+					  <source srcset="images/comic.png" media="(min-width: 360px)">
+					  <img srcset="images/comic-penguins-column.png"
+							alt="Comic strip. Frame 1: Two penguins see birds flying; penguin 1 (Pecky) says 'Birds can fly and penguins are birds';
+							penguin 2 says 'So, penguins can fly'. Frame 2: Penguin 2 jumps off the cliff and cannot fly. Frame 3: Penguin 1 looks
+							down to the bottom of the cliff and remarks 'So, penguins cannot fly'; a textbox reads 'But, penguins are birds so they
+							must fly. So, penguins can and cannot fly, which is impossible. Sooo... no penguins exist!'. Frame 4: Penguin 1 disappears;
+							a textbox reads 'Moral of the story: Not all birds fly. Birds typically fly.'">
+					</picture></span>
+					<ul class="features" style="text-align:center;">
+						<li><a href="#intro" class="button next scrolly" style="display:inline-block;">Project Details</a></li>
+						<li><a href="#resources" class="button next scrolly" style="display:inline-block;">Download</a></li>
+					</ul>
+				</header>
+
+				<!-- Navigation -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introduction</a></li>
+							<li><a href="#background">Background</a></li>
+							<li><a href="#objectives">Objectives</a></li>
+							<li><a href="#ddd">Defeasible Disjunctive Datalog</a></li>
+							<li><a href="#conclusions">Conclusions</a></li>
+							<li><a href="#resources">Resources</a></li>
+							<li><a href="#team">Team</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+         		<!-- Introduction -->
+							<section id="intro" class="main">
+								<header class="major">
+									<h2>Introduction</h2>
+								</header>
+								<p>
+									The Knowledge Representation and Reasoning approach to Artificial Intelligence uses logics to represent knowledge
+									and automated reasoning methods to draw new conclusions from that knowledge. In classical (monotonic) reasoning systems,
+									all information is certain and adding new information does not change the conclusions that you could previously draw.
+								</p>
+								<p>
+									Pecky the penguin used a classical reasoning system. When she added the fact that "penguins do not fly" to
+									her knowledge base, this conflicted with the fact that she could already conclude that "penguins do fly" based
+									on previous knowledge.So, the only way for both these statements to be true was if no penguins existed.
+									And, so Pecky ceased to exist. Pecky's predicament shows that classical reasoning can be too weak to model certain systems.
+									<span class="image left"><img src="images/penguin-typically.png"/></span>
+								</p>
+								<p>
+									Defeasible (non-monotonic) reasoning systems would allow Pecky to say "birds typically fly". Then, when Pecky adds
+									the extra information that "penguins do not fly", the system would retract its previous conclusion that "penguins do
+									fly". Pecky would still exist if she used this "common sense" approach to reasoning.
+								</p>
+							</section>
+
+						<!-- Background -->
+                            <section id="background" class="main">
+                                <header class="major">
+                                    <h2>Background</h2>
+                                </header>
+
+                                <!-- Navigation to each subsection -->
+                                <nav id="nav-back">
+                                    <ul>
+                                        <li><a href="#prop" class="active">Propositional Logic</a></li>
+                                        <li><a href="#klm">KLM Approach</a></li>
+                                        <li><a href="#rc">Rational Closure</a></li>
+                                        <li><a href="#lc">Lexicographic & Relevant Closure</a></li>
+                                        <li><a href="#datalog">Disjunctive Datalog</a></li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Propositional Logic -->
+                                <header id="prop" class="major">
+                                    <h3>Propositional Logic</h3>
+                                </header>
+                                <p>
+                                    Propositional logic is a simple logic which uses classical reasoning. It uses symbols to represent base
+                                    statements that can be assigned a value of true or false. Boolean operators are used to combine these
+                                    base statements to form more complex statements.
+                                    <span class="image right"><img src="images/prop-operators.png" /></span>
+                                </p>
+                                <p>
+                                    Pecky uses the symbols p, b and f to represent penguins, birds and flying, respectively. Then, Pecky combines
+                                    these symbols using boolean operators to make the statements "birds can fly", "penguins are birds" and
+                                    "penguins cannot fly".
+                                    <span class="image left"><img src="images/penguin-prop-statements.png" /></span>
+                                </p>
+                                <p>
+                                    Truth tables can be used to define the meaning of each boolean operator. And, those meanings are used
+                                    to reason about propositional statements. The most common question we want to answer is: "Can we
+                                    conclude that a new statement is true based on the statements that we already know to be true?" This is
+                                    known as classical entailment.
+                                </p>
+                                <p>
+                                    <span class="image right"><img src="images/penguin-oh-no.png" /></span>
+                                    Using truth tables (or more efficient semantic tableau methods), Pecky can still logically conclude that
+                                    "penguins can fly". But, Pecky already knows that "penguins cannot fly" and it is impossible for both
+                                    of these statements to be true. So, Pecky does not exist. To solve this problem we need to make propositional
+                                    logic defeasible.
+                                </p>
+
+                                <!-- The KLM Approach -->
+                                <header id="klm" class="major">
+                                    <h3>The KLM Approach</h3>
+                                </header>
+                                <p>
+                                    The KLM approach, proposed by Kraus, Lehmann and Magidor, is a well-supported approach to defeasible
+                                    reasoning. It allows us to represent statements such as "penguins typically fly" using a defeasible
+                                    implication operator. Statements of this form are known as defeasible statements and normal propositional
+                                    logic statements are known as classical statements.
+                                </p>
+
+                                <span class="image fit-ish"><img src="images/twiddle.png" /></span>
+
+                                <p>
+                                    We now want to be able to answer the question: "Can we conclude that a new defeasible statement is true based
+                                    on the statements (both defeasible and classical) that we already know to be true?" This is known as defeasible
+                                    entailment.
+                                </p>
+
+                                <span class="image fit-ish"><img src="images/defeasible-entailment.png" /></span>
+
+                                <p>
+                                    Unlike classical entailment, defeasible entailment is not unique. To address this the KLM approach provides a
+                                    list of rationality properties, called the KLM properties. The properties should be satisfied by a suitable
+                                    defeasible entailment method.
+                                </p>
+
+                                <span class="image fit-ish"><img src="images/klm.png" /></span>
+
+                                <p>
+                                    All of these properties have a fairly intuitive meaning. For example; the And property say that, if Pecky knows
+                                    that "penguins can waddle" and "penguins can belly-slide", then Pecky should be able to conclude that
+                                    "penguins can waddle and belly-slide".
+                                </p>
+
+                                <!-- Rational Closure -->
+                                <header id="rc" class="major">
+                                    <h3>Rational Closure</h3>
+                                </header>
+                                <p>
+																		<span class="image left"><img src="images/penguin-rc-query.png" /></span>
+                                    Rational closure is the most simple and intuitive way of defining defeasible entailment. There is a semantic definition
+                                    of Rational Closure and an equivalent algorithmic definition. For this project we use the algorithmic definition as the
+                                    sole definition of Rational Closure.
+                                </p>
+
+                                <p>
+                                    This algorithm is split into two distinct sub-algorithms: Base Rank and Rational Closure. (A detailed, formal description
+                                    of these algorithms is found in the full paper.) The Base Rank algorithm ranks all known statements according to
+                                    typicality. Intuitively, more general statements will appear higher up in the ranking and more specific statements
+                                    will appear lower down.
+                                </p>
+
+																<span class="image right"><img src="images/rc-table-1.png" /></span>
+
+                                <p>
+                                    The Rational Closure algorithm uses the ranking of known statements to check whether we can conclude our the query
+                                    statement from the known statements. When the left-hand side of our query statement is false, according to known
+                                    statements, then the query statement is trivially true. So, we remove the least typical level in the ranking, since
+                                    some of the statements in this level must be causing the left-hand side to be false.
+                                </p>
+
+																<span class="image left"><img src="images/rc-table-2.png" /></span>
+
+                                <p>
+                                    When the left-hand side of our query statement is true, given the remaining ranked statements, then the query
+                                    statement may be false. So, we need to check whether the query statement is true, given the remaining statements.
+                                    If it is then we can conclude that it is true in our world; otherwise we conclude that the query is false.
+                                </p>
+
+																<span class="image fit-ish"><img src="images/penguin-conclude.png" /></span>
+
+                                <!-- Lexicographic/Relevant Closure -->
+                                <header id="lc" class="major">
+                                    <h3>Lexicographic & Relevant Closure</h3>
+                                </header>
+																<p>
+                                    If the left-hand side of our query is false, then some of the statements in the top level (least typical level) of
+																		the ranking must be causing the left-hand side to be false. However, some other statements in this level
+																		may have no effect. So, it seems unnecessary to throw away all of the statements in the top level.
+                                </p>
+                                <p>
+                                    In Lexicographic Closure, instead of throwing away the entire top level of statements, we throw away the fewest number of statements possible.
+                                    The fewest number of statements is calculated by considering all possible subsets of the statements in the top level.
+                                </p>
+                                <p>
+                                    In Relevant Closure, we only consider throwing away 'relevant' statements. Relevance is determined by which statements are responsible for showing
+                                    the left-hand side of the query to be false.
+                                </p>
+
+                                <!-- Datalog -->
+                                <header id="datalog" class="major">
+                                    <h3>Disjunctive Datalog</h3>
+                                </header>
+                                <p>
+                                    Datalog is a more expressive logic than propositional logic. It allows us to represent statements about
+                                    specific individuals as well as generic concepts, which can be associated with many individuals. For example;
+                                    Pecky can now say that "Pecky is a penguin" or "for all X, X is a penguin".
+                                </p>
+                                <p>
+                                    Datalog is a made up of rules and facts. Facts provide information about the world and rules allow us to deduce
+                                    facts from other facts. Disjunctive Datalog rules have the following form:
+                                </p>
+
+                                <span class="image fit-ish"><img src="images/datalog-rule.png" /></span>
+
+                                <p>
+                                    Facts are rules without a body (the left-hand side). Disjunctive Datalog facts have the following form:
+                                </p>
+
+                                <span class="image fit-ish"><img src="images/datalog-fact.png" /></span>
+
+                                <p>
+                                    The boolean operators used in Datalog have the same intuitive meaning as for propositional logic. Rules
+                                    intuitively mean that, whenever every statement between "and" symbols on the left-hand side of the rule are
+                                    true, then at least one of the statements between "or" symbols on the right-hand side are true. Facts mean
+                                    that at least one of the statements between "or" symbols are true.
+                                </p>
+                                <p>
+                                    Using Datalog, Pecky can now say that "Pecky is a penguin", "For all X, if X is a penguin then X waddles or
+                                    slides" or "For all X, if X is a penguin and lives in the Nothern Hemisphere then X is a Galapogos
+                                    penguin". However, Pecky cannot use Datalog to say that "For all X, if X is a bird then X typically flies".
+                                    KLM-style defeasible reasoning needs to be extended to Datalog in order for Pecky to make these type of
+                                    statements in Datalog.
+                                </p>
+
+																<span class="image fit-ish"><img src="images/penguin-datalog-statements.png" /></span>
+                            </section>
+
+						<!-- Objectives -->
+							<section id="objectives" class="main">
+								<header class="major">
+									<h2>Objectives</h2>
+								</header>
+								<p>
+									The primary objective of the project is to extend KLM-style defeasible reasoning to Disjunctive Datalog.
+									This is achieved by:
+								</p>
+								<ol>
+									<li>
+										Finding and justifying an extension of the KLM properties for Datalog. (Joint work)
+									</li>
+									<li>
+										Finding a satisfactory extension of the Rational Closure algorithm for Datalog and proving that it satisfies
+										the KLM properties for Datalog. (Joint work)
+									</li>
+									<li>
+										Finding a satisfactory extension of the Relevant Closure algorithm for Datalog and proving that it still does not
+										satisfy all of the KLM properties for Datalog. (Morris)
+									</li>
+									<li>
+										Finding a satisfactory extension of the Lexicographic Closure algorithm for Datalog and proving that it satisfies
+										the KLM properties for Datalog. (Ross)
+									</li>
+								</ol>
+							</section>
+
+						<!-- Defeasible Disjunctive Datalog -->
+							<section id="ddd" class="main">
+								<header class="major">
+									<h2>Defeasible Disjunctive Datalog</h2>
+								</header>
+								<p>
+									In our papers we discuss a KLM-style defeasible reasoning extension for Disjunctive Datalog. Initially, we
+									discuss an extension of the KLM properties. It turns out that not all of the properties can be expressed
+									using standard Disjunctive Datalog. Thus, we adapt the syntax of Disjunctive Datalog and use
+									first-order logic semantics to construct a more expressive logic, which we call Datalog+.
+									We use Datalog+ to capture how reasoning should operate, even if one cannot express all possible Datalog+
+									statements in standard Disjunctive Datalog.
+								</p>
+								<p>
+									Next, we extend the algorithms for computing defeasible entailment to the Disjunctive Datalog case. In the extended algorithms,
+									we assume that there exist algorithms to compute classical entailment checking of rules and basic set manipulation.
+									Finally, we show that the Rational Closure algorithm satisfies all of the KLM properties. Ross shows that the Lexicographic
+									Closure algorithm satisfies all of the KLM properties and Morris shows that the Relevant Closure algorithm does not satisfy
+									all of the properties.
+								</p>
+							</section>
+
+						<!-- Conclusions -->
+							<section id="conclusions" class="main">
+								<header class="major">
+									<h2>Conclusions</h2>
+								</header>
+								<p>
+									KLM-style defeasible reasoning can be extended to Disjunctive Datalog. In particular:
+								</p>
+								<ol>
+									<li>
+										The KLM properties can be extended to the Datalog case by using an extended version of
+										the Datalog logic to express the properties. The extension retains the intended meaning of the
+										original properties. (Joint work)
+									</li>
+									<li>
+										The extended Rational Closure algorithm satisfies the KLM properties for Datalog. (Joint work)
+									</li>
+									<li>
+										There is an extension of the Relevant Closure algorithm for Datalog. However, as found for
+										the propositional case, the algorithm does not satisfy all of the KLM properties for Datalog. (Morris)
+									</li>
+									<li>
+										The extended Lexicographic Closure algorithm satisfies the KLM properties for Datalog. (Ross)
+									</li>
+								</ol>
+							</section>
+
+						<!-- Resourcess -->
+							<section id="resources" class="main special">
+								<header class="major">
+									<h2>Resources</h2>
+								</header>
+								<p>
+									For further project details, please see the following project documentation:
+								</p>
+								<ul class="features">
+									<!-- Matt's output -->
+									<li>
+										<h3>Matthew Morris</h3>
+										<ul class="actions fit">
+											<li><a href="files/matt-lit-review.pdf" target="_blank" class="button">Literature Review</a></li>
+										</ul>
+										<ul class="actions fit">
+											<li><a href="files/matt-paper.pdf" target="_blank" class="button">Project Paper</a></li>
+										</ul>
+									</li>
+									<!-- Tala's output -->
+									<li>
+										<h3>Tala Ross</h3>
+										<ul class="actions fit">
+											<li><a href="files/tala-lit-review.pdf" target="_blank" class="button">Literature Review</a></li>
+										</ul>
+										<ul class="actions fit">
+											<li><a href="files/tala-paper.pdf" target="_blank" class="button">Project Paper</a></li>
+										</ul>
+									</li>
+									<!-- Overall project resources -->
+									<li>
+										<h3>Overall Project</h3>
+										<ul class="actions fit">
+											<li><a href="files/proposal.pdf" target="_blank" class="button">Project Proposal</a></li>
+										</ul>
+										<ul class="actions fit">
+											<li><a href="files/poster.pdf" target="_blank" class="button">Project Poster</a></li>
+										</ul>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Team -->
+							<section id="team" class="main special">
+								<header class="major">
+									<h2>Team</h2>
+								</header>
+								<ul class="features">
+									<!-- Author: Matthew Morris -->
+									<li>
+										<!-- Placeholder image: -->
+										<span class="image fit"><img src="images/matt-profile.jpg" alt="Head shot of Matthew Morris" style="border-radius:50%;"/></span>
+										<h2>Matthew Morris</h2>
+										<h3>Author</h3>
+										<!-- <p>
+											<a href="mailto:matthewthemorris@gmail.com" target="_blank">matthewthemorris@gmail.com</a>
+										</p> -->
+										<div class="row aln-center">
+											<div class="col-2">
+												<a href="mailto:matthewthemorris@gmail.com" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://github.com/mmorris44" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://www.linkedin.com/in/matthew-morris-b159a4126/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+											</div>
+										</div>
+									</li>
+									<!-- Author: Tala Ross -->
+									<li>
+										<!-- Placeholder image: -->
+										<span class="image fit"><img src="images/tala-profile.jpg" alt="Head shot of Tala Ross" style="border-radius:50%;"/></span>
+										<h2>Tala Ross</h2>
+										<h3>Author</h3>
+										<!-- <p>
+											<a href="mailto:rsstal002@myuct.ac.za" target="_blank">rsstal002@myuct.ac.za</a>
+										</p> -->
+										<div class="row aln-center">
+											<div class="col-2">
+												<a href="mailto:rsstal002@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://github.com/TalaJRoss" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://www.linkedin.com/in/talajross/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+											</div>
+										</div>
+									</li>
+									<!-- Supervisor: Tommie Meyer -->
+									<li>
+											<!-- Placeholder image: -->
+											<span class="image fit"><img src="images/tommie-profile.jpg" alt="Head shot of Tommie Meyer" style="border-radius:50%;"/></span>
+											<h2>Tommie Meyer</h2>
+											<h3>Supervisor</h3>
+											<!-- <p>
+												<a href="mailto:tmeyer@cs.uct.ac.za" target="_blank">tmeyer@cs.uct.ac.za</a>
+											</p> -->
+											<div class="row aln-center">
+												<div class="col-2">
+													<a href="mailto:tmeyer@cs.uct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+												</div>
+											</div>
+									</li>
+								</ul>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>University of Cape Town,</h2>
+							<h2>Computer Science Department</h2>
+							<p>
+								This research was completed as part of the Computer Science Honours programme at the University of Cape Town.
+							</p>
+						</section>
+						<section>
+							<h2>Contact Details</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Computer Science Building, 18 University Avenue North, Rondebosch, Cape Town, 7700</dd>
+								<dt>Phone</dt>
+								<dd>+27 (0)21 650 2663</dd>
+								<dt>Email</dt>
+								<dd><a href="mailto:dept@cs.uct.ac.za" target="_blank">dept@cs.uct.ac.za</a></dd>
+								<dt>Website</dt>
+								<dd><a href="https://www.cs.uct.ac.za/" target="_blank">https://www.cs.uct.ac.za/</a></dd>
+							</dl>
+						</section>
+						<p class="copyright">&copy; University of Cape Town. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
