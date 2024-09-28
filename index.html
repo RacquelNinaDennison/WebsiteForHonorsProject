@@ -127,35 +127,24 @@
                                     <h3>The KLM Approach</h3>
                                 </header>
                                 <p>
-                                    The KLM approach, proposed by Kraus, Lehmann and Magidor, is a well-supported approach to defeasible
-                                    reasoning. It allows us to represent statements such as "penguins typically fly" using a defeasible
-                                    implication operator. Statements of this form are known as defeasible statements and normal propositional
-                                    logic statements are known as classical statements.
+                                    The KLM approach, proposed by Kraus, Lehmann and Magidor, is a well known approach to defeasible
+                                    reasoning. It allows us to represent statements such as "mammals typically give birth to liveyoung" using a defeasible
+                                    implication operator. Statements which use the defeasible operator as known as defeasible statements. 
                                 </p>
 
-                                <span class="image fit-ish"><img src="images/twiddle.png" /></span>
+                                <span class="image fit-ish"><img src="images/mammals-tyically .png" /></span>
 
                                 <p>
-                                    We now want to be able to answer the question: "Can we conclude that a new defeasible statement is true based
-                                    on the statements (both defeasible and classical) that we already know to be true?" This is known as defeasible
-                                    entailment.
+                                    If Perry tries to conclude that a new defeasible statement is true based on previous statements, classical 
+									and defeasible, they can use defeasible entailment to determine the answer.
                                 </p>
 
-                                <span class="image fit-ish"><img src="images/defeasible-entailment.png" /></span>
+                                <span class="image fit-ish"><img src="images/knowledge-base.png" /></span>
 
                                 <p>
-                                    Unlike classical entailment, defeasible entailment is not unique. To address this the KLM approach provides a
-                                    list of rationality properties, called the KLM properties. The properties should be satisfied by a suitable
-                                    defeasible entailment method.
-                                </p>
-
-                                <span class="image fit-ish"><img src="images/klm.png" /></span>
-
-                                <p>
-                                    All of these properties have a fairly intuitive meaning. For example; the And property say that, if Pecky knows
-                                    that "penguins can waddle" and "penguins can belly-slide", then Pecky should be able to conclude that
-                                    "penguins can waddle and belly-slide".
-                                </p>
+                                   Defeaible entailment has been defined by many frameworks. The framework focused on in this project is Rational Closure.
+								</p>
+             
 
                                 <!-- Rational Closure -->
                                 <header id="rc" class="major">
@@ -195,61 +184,7 @@
 																<span class="image fit-ish"><img src="images/penguin-conclude.png" /></span>
 
                                 <!-- Lexicographic/Relevant Closure -->
-                                <header id="lc" class="major">
-                                    <h3>Lexicographic & Relevant Closure</h3>
-                                </header>
-																<p>
-                                    If the left-hand side of our query is false, then some of the statements in the top level (least typical level) of
-																		the ranking must be causing the left-hand side to be false. However, some other statements in this level
-																		may have no effect. So, it seems unnecessary to throw away all of the statements in the top level.
-                                </p>
-                                <p>
-                                    In Lexicographic Closure, instead of throwing away the entire top level of statements, we throw away the fewest number of statements possible.
-                                    The fewest number of statements is calculated by considering all possible subsets of the statements in the top level.
-                                </p>
-                                <p>
-                                    In Relevant Closure, we only consider throwing away 'relevant' statements. Relevance is determined by which statements are responsible for showing
-                                    the left-hand side of the query to be false.
-                                </p>
-
-                                <!-- Datalog -->
-                                <header id="datalog" class="major">
-                                    <h3>Disjunctive Datalog</h3>
-                                </header>
-                                <p>
-                                    Datalog is a more expressive logic than propositional logic. It allows us to represent statements about
-                                    specific individuals as well as generic concepts, which can be associated with many individuals. For example;
-                                    Pecky can now say that "Pecky is a penguin" or "for all X, X is a penguin".
-                                </p>
-                                <p>
-                                    Datalog is a made up of rules and facts. Facts provide information about the world and rules allow us to deduce
-                                    facts from other facts. Disjunctive Datalog rules have the following form:
-                                </p>
-
-                                <span class="image fit-ish"><img src="images/datalog-rule.png" /></span>
-
-                                <p>
-                                    Facts are rules without a body (the left-hand side). Disjunctive Datalog facts have the following form:
-                                </p>
-
-                                <span class="image fit-ish"><img src="images/datalog-fact.png" /></span>
-
-                                <p>
-                                    The boolean operators used in Datalog have the same intuitive meaning as for propositional logic. Rules
-                                    intuitively mean that, whenever every statement between "and" symbols on the left-hand side of the rule are
-                                    true, then at least one of the statements between "or" symbols on the right-hand side are true. Facts mean
-                                    that at least one of the statements between "or" symbols are true.
-                                </p>
-                                <p>
-                                    Using Datalog, Pecky can now say that "Pecky is a penguin", "For all X, if X is a penguin then X waddles or
-                                    slides" or "For all X, if X is a penguin and lives in the Nothern Hemisphere then X is a Galapogos
-                                    penguin". However, Pecky cannot use Datalog to say that "For all X, if X is a bird then X typically flies".
-                                    KLM-style defeasible reasoning needs to be extended to Datalog in order for Pecky to make these type of
-                                    statements in Datalog.
-                                </p>
-
-																<span class="image fit-ish"><img src="images/penguin-datalog-statements.png" /></span>
-                            </section>
+                                </section>
 
 						<!-- Objectives -->
 							<section id="objectives" class="main">
@@ -260,23 +195,8 @@
 									The primary objective of the project is to extend KLM-style defeasible reasoning to Disjunctive Datalog.
 									This is achieved by:
 								</p>
-								<ol>
-									<li>
-										Finding and justifying an extension of the KLM properties for Datalog. (Joint work)
-									</li>
-									<li>
-										Finding a satisfactory extension of the Rational Closure algorithm for Datalog and proving that it satisfies
-										the KLM properties for Datalog. (Joint work)
-									</li>
-									<li>
-										Finding a satisfactory extension of the Relevant Closure algorithm for Datalog and proving that it still does not
-										satisfy all of the KLM properties for Datalog. (Morris)
-									</li>
-									<li>
-										Finding a satisfactory extension of the Lexicographic Closure algorithm for Datalog and proving that it satisfies
-										the KLM properties for Datalog. (Ross)
-									</li>
-								</ol>
+								
+							
 							</section>
 
 						<!-- Defeasible Disjunctive Datalog -->
@@ -284,21 +204,7 @@
 								<header class="major">
 									<h2>Defeasible Disjunctive Datalog</h2>
 								</header>
-								<p>
-									In our papers we discuss a KLM-style defeasible reasoning extension for Disjunctive Datalog. Initially, we
-									discuss an extension of the KLM properties. It turns out that not all of the properties can be expressed
-									using standard Disjunctive Datalog. Thus, we adapt the syntax of Disjunctive Datalog and use
-									first-order logic semantics to construct a more expressive logic, which we call Datalog+.
-									We use Datalog+ to capture how reasoning should operate, even if one cannot express all possible Datalog+
-									statements in standard Disjunctive Datalog.
-								</p>
-								<p>
-									Next, we extend the algorithms for computing defeasible entailment to the Disjunctive Datalog case. In the extended algorithms,
-									we assume that there exist algorithms to compute classical entailment checking of rules and basic set manipulation.
-									Finally, we show that the Rational Closure algorithm satisfies all of the KLM properties. Ross shows that the Lexicographic
-									Closure algorithm satisfies all of the KLM properties and Morris shows that the Relevant Closure algorithm does not satisfy
-									all of the properties.
-								</p>
+								
 							</section>
 
 						<!-- Conclusions -->
