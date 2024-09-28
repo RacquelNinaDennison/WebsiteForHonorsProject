@@ -23,9 +23,9 @@
 					<p>A Computer Science Honours project exploring an algorithmic definition of KLM-style defeasible reasoning for Answer Set Programming</a>.</p>
 
 					<span class="image fit"><picture>
-					  <source srcset="images/comic.png" media="(min-width: 800px)">
-					  <source srcset="images/comic.png" media="(min-width: 360px)">
-					  <img srcset="images/comic-penguins-column.png"
+					  <source srcset="images/playtupus.png" media="(min-width: 800px)">
+					  <source srcset="images/playtupus.png" media="(min-width: 360px)">
+					  <img srcset="images/playtupus.png"
 							alt="Comic strip. Frame 1: Two penguins see birds flying; penguin 1 (Pecky) says 'Birds can fly and penguins are birds';
 							penguin 2 says 'So, penguins can fly'. Frame 2: Penguin 2 jumps off the cliff and cannot fly. Frame 3: Penguin 1 looks
 							down to the bottom of the cliff and remarks 'So, penguins cannot fly'; a textbox reads 'But, penguins are birds so they
@@ -60,21 +60,20 @@
 									<h2>Introduction</h2>
 								</header>
 								<p>
-									The Knowledge Representation and Reasoning approach to Artificial Intelligence uses logics to represent knowledge
-									and automated reasoning methods to draw new conclusions from that knowledge. In classical (monotonic) reasoning systems,
-									all information is certain and adding new information does not change the conclusions that you could previously draw.
+								
+								Knowledge representation and reasoning is a branch of Artifical Intelligence which uses logic to represent knowledge about the world. 
+								Automated reasoning methods are used to draw new conclusions from a set of known knowledge. Classical reasoning systems were 
+								traditionally used to draw conclusions from sets of statements.Classical reasoning systems are monotonic, which means that 
+								all information is certain and adding new information will not retract conclusions previously drawn. 
 								</p>
 								<p>
-									Pecky the penguin used a classical reasoning system. When she added the fact that "penguins do not fly" to
-									her knowledge base, this conflicted with the fact that she could already conclude that "penguins do fly" based
-									on previous knowledge.So, the only way for both these statements to be true was if no penguins existed.
-									And, so Pecky ceased to exist. Pecky's predicament shows that classical reasoning can be too weak to model certain systems.
-									<span class="image left"><img src="images/penguin-typically.png"/></span>
+									For example, Perry the Platypus once used a classical reasoning system. While spending time with Phineas, Perry learned that mammals give birth to live young. Given that they are a platypus and that platypuses are mammals, Perry logically deduced that platypuses must give birth to live young as well. However, Ferb later informed Perry that platypuses actually lay eggs. This contradiction confused Perry, as their reasoning system was not flexible enough to accommodate the new information. Perry's dilemma illustrates a key weakness of classical reasoning: it struggles to handle exceptions or conflicting data.
+									<span class="image left"><img src="images/perry-baby.png"/></span>
 								</p>
 								<p>
-									Defeasible (non-monotonic) reasoning systems would allow Pecky to say "birds typically fly". Then, when Pecky adds
-									the extra information that "penguins do not fly", the system would retract its previous conclusion that "penguins do
-									fly". Pecky would still exist if she used this "common sense" approach to reasoning.
+									Defeasible (non-monotonic) reasoning systems would allow Perry to say "mammals typically give birth to live young". When Perry concludes 
+									that "platypus do not give birth to live young", the system would retract its previous conclusion that "platypus do
+									give birth to live young". Perry would still exist if they used a "common sense" approach to reasoning.
 								</p>
 							</section>
 
@@ -90,8 +89,8 @@
                                         <li><a href="#prop" class="active">Propositional Logic</a></li>
                                         <li><a href="#klm">KLM Approach</a></li>
                                         <li><a href="#rc">Rational Closure</a></li>
-                                        <li><a href="#lc">Lexicographic & Relevant Closure</a></li>
-                                        <li><a href="#datalog">Disjunctive Datalog</a></li>
+                                        <li><a href="#lc">Answer Set Programming</a></li>
+                                     
                                     </ul>
                                 </nav>
 
@@ -100,29 +99,27 @@
                                     <h3>Propositional Logic</h3>
                                 </header>
                                 <p>
-                                    Propositional logic is a simple logic which uses classical reasoning. It uses symbols to represent base
-                                    statements that can be assigned a value of true or false. Boolean operators are used to combine these
-                                    base statements to form more complex statements.
+                                   Propositional Logic uses symbols to represent basic
+                                    statements about the world that are assigned a value of true or false. Boolean operators are used to combine these
+                                    statements to form more complex statements.
                                     <span class="image right"><img src="images/prop-operators.png" /></span>
                                 </p>
                                 <p>
-                                    Pecky uses the symbols p, b and f to represent penguins, birds and flying, respectively. Then, Pecky combines
-                                    these symbols using boolean operators to make the statements "birds can fly", "penguins are birds" and
-                                    "penguins cannot fly".
-                                    <span class="image left"><img src="images/penguin-prop-statements.png" /></span>
+                                    Perry uses the symbols p, m and ly to represent platypus, mammals and liveyoung, respectively. Perry then combines
+                                    these symbols using boolean operators to make the statements "mammals have liveyoung", "platypus are mammals" and
+                                    "platypus do not have liveyoung".
+                                    <span class="image left"><img src="images/perry-classical.png" /></span>
                                 </p>
                                 <p>
                                     Truth tables can be used to define the meaning of each boolean operator. And, those meanings are used
-                                    to reason about propositional statements. The most common question we want to answer is: "Can we
-                                    conclude that a new statement is true based on the statements that we already know to be true?" This is
-                                    known as classical entailment.
+                                    to reason about propositional statements. Common questions asked are "What statements can we conclude to be 
+									true given the information known?". This is known as classical entailment. 
                                 </p>
                                 <p>
-                                    <span class="image right"><img src="images/penguin-oh-no.png" /></span>
-                                    Using truth tables (or more efficient semantic tableau methods), Pecky can still logically conclude that
-                                    "penguins can fly". But, Pecky already knows that "penguins cannot fly" and it is impossible for both
-                                    of these statements to be true. So, Pecky does not exist. To solve this problem we need to make propositional
-                                    logic defeasible.
+                                    <span class="image right"><img src="images/perry-exist.png" /></span>
+                                    Using truth tables (or more efficient semantic tableau methods), Perry can still logically conclude that
+                                    "platypus can give birth to liveyoung". But, Perry already knows that "platypus do not give birth to liveyoung" and it is impossible for both
+                                    of these statements to be true. So, Perry does not exist. To solve this, Perry explored defeasible reasoning which minimcs common sense reasoning.
                                 </p>
 
                                 <!-- The KLM Approach -->
