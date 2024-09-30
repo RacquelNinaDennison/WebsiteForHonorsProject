@@ -63,17 +63,22 @@
 								
 								Knowledge representation and reasoning is a branch of Artifical Intelligence which uses logic to represent knowledge about the world. 
 								Automated reasoning methods are used to draw new conclusions from a set of known knowledge. Classical reasoning systems were 
-								traditionally used to draw conclusions from sets of statements.Classical reasoning systems are monotonic, which means that 
+								traditionally used to draw conclusions from sets of statements. Classical reasoning systems are monotonic, which means that 
 								all information is certain and adding new information will not retract conclusions previously drawn. 
 								</p>
 								<p>
-									For example, Perry the Platypus once used a classical reasoning system. While spending time with Phineas, Perry learned that mammals give birth to live young. Given that they are a platypus and that platypuses are mammals, Perry logically deduced that platypuses must give birth to live young as well. However, Ferb later informed Perry that platypuses actually lay eggs. This contradiction confused Perry, as their reasoning system was not flexible enough to accommodate the new information. Perry's dilemma illustrates a key weakness of classical reasoning: it struggles to handle exceptions or conflicting data.
+									For example, Perry the Platypus once used a classical reasoning system. While spending time with Phineas, 
+									Perry learned that mammals give birth to live young. Given that they are a platypus and that platypuses are mammals, 
+									Perry logically deduced that platypuses must give birth to live young as well. However, Ferb later informed 
+									Perry that platypuses actually lay eggs. This contradiction confused Perry, as their reasoning system was 
+									not flexible enough to accommodate the new information. Perry's dilemma illustrates a key weakness of classical 
+									reasoning: it struggles to handle exceptions or conflicting data.
 									<span class="image left"><img src="images/perry-baby.png"/></span>
 								</p>
 								<p>
-									Defeasible (non-monotonic) reasoning systems would allow Perry to say "mammals typically give birth to live young". When Perry concludes 
-									that "platypus do not give birth to live young", the system would retract its previous conclusion that "platypus do
-									give birth to live young". Perry would still exist if they used a "common sense" approach to reasoning.
+									Defeasible (non-monotonic) reasoning systems would allow Perry to say "mammals typically give birth to live young". 
+									When Perry concludes that "platypus do not give birth to live young", the system would retract its previous conclusion 
+									that "platypus do give birth to live young". Perry would still exist if they used a "common sense" approach to reasoning.
 								</p>
 							</section>
 
@@ -89,7 +94,7 @@
                                         <li><a href="#prop" class="active">Propositional Logic</a></li>
                                         <li><a href="#klm">KLM Approach</a></li>
                                         <li><a href="#rc">Rational Closure</a></li>
-                                        <li><a href="#lc">Answer Set Programming</a></li>
+                                        <li><a href="#asp">Answer Set Programming</a></li>
                                      
                                     </ul>
                                 </nav>
@@ -184,7 +189,70 @@
 																<span class="image fit-ish"><img src="images/penguin-conclude.png" /></span>
 
                                 <!-- Lexicographic/Relevant Closure -->
+                                <!-- </section> -->
+
+                                <!-- Answer Set Programming -->
+                                <header id="asp" class="major">
+                                    <h3>Answer Set Programming</h3>
+                                </header>
+
+								<!-- Can add a comparison between imperative and declarative programming here -->
+                                <p>
+									Answer Set Programming (ASP) is a declarative programming paradigm that uses logic to represent knowledge and solve problems.
+									ASP programs are written in a logic-based language and are used to represent a set of rules and facts. The rules are used to
+									define the problem and the facts are used to define the initial state of the problem. The ASP solver then uses these rules and
+									facts to find a solution to the problem.
+								</p>
+								<p>
+									ASP is a non-monotonic logic programming paradigm, which means that the conclusions drawn from the rules and facts can be
+									retracted if new information is added. This makes ASP a suitable candidate for defeasible reasoning.
+								</p>
+								<p>
+									The ASP solver uses a grounding process to convert the rules and facts into a propositional logic program. The solver then
+									uses a search algorithm to find the answer sets of the program. An answer set is a set of facts that satisfy the rules of the
+									program. The solver can then use these answer sets to find a solution to the problem.
+								</p>
+								<p>
+									The grounding process can be computationally expensive, especially for large programs. The solver must generate all possible
+									combinations of the rules and facts to find the answer sets. This can be time-consuming and memory-intensive, especially for
+									programs with a large number of rules and facts.
+								</p>
+								<p>
+									The ASP solver uses a search algorithm to find the answer sets of the program. The search algorithm uses a backtracking
+									approach to explore the possible combinations of rules and facts. The solver starts with an empty set of facts and adds
+									rules and facts to the set until it finds an answer set. If the solver cannot find an answer set, it backtracks and tries
+									a different combination of rules and facts.
+								</p>
+
+								<!-- Can remove this -->
+								<p>
+									The ASP solver can use different search algorithms to find the answer sets of the program. The solver can use a depth-first
+									search algorithm to explore the possible combinations of rules and facts. The solver can also use a conflict-driven clause
+									learning algorithm to find the answer sets. The solver uses a conflict-driven clause learning algorithm to learn from the
+									conflicts in the program and find the answer sets.
+								</p>
+								<p>
+									Example: The following is an example of an ASP program that represents a simple problem. The program defines a set of rules
+									and facts that represent the problem. The solver uses these rules and facts to find the answer sets of the program.
+								</p>
+								<p> 
+									<code>
+										% Rules <br>
+										% If a platypus is a mammal, then it gives birth to live young. <br>
+										mammal(X) :- platypus(X). <br>
+										liveyoung(X) :- mammal(X). <br>
+										% Platypus do not give birth to live young. <br>
+										% Facts <br>
+										% Perry is a platypus. <br>
+										platypus(perry). <br>
+										% Query <br>
+										% Does Perry give birth to live young? <br>
+										?- liveyoung(perry). <br>
+									</code>
+								</p>
+                            <!-- Lexicographic/Relevant Closure -->
                                 </section>
+
 
 						<!-- Objectives -->
 							<section id="objectives" class="main">
