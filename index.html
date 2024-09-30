@@ -157,37 +157,24 @@
                                     <h3>Rational Closure</h3>
                                 </header>
                                 <p>
-																		<span class="image left"><img src="images/penguin-rc-query.png" /></span>
-                                    Rational closure is the most simple and intuitive way of defining defeasible entailment. There is a semantic definition
-                                    of Rational Closure and an equivalent algorithmic definition. For this project we use the algorithmic definition as the
-                                    sole definition of Rational Closure.
+																		<span class="image left"><img src="images/perry-surprised-2.png" width="200%" /></span>
+
+									Rational Closure is a defeasible entailment formalism within the KLM framework, designed for reasoning with exceptions. It
+									organises knowledge hierarchically, allowing more specific statements to override general ones.
                                 </p>
 
                                 <p>
-                                    This algorithm is split into two distinct sub-algorithms: Base Rank and Rational Closure. (A detailed, formal description
-                                    of these algorithms is found in the full paper.) The Base Rank algorithm ranks all known statements according to
-                                    typicality. Intuitively, more general statements will appear higher up in the ranking and more specific statements
-                                    will appear lower down.
+									The reasoning process involves two main steps. First, the statements in a knowledge base are ranked by exceptionality — how specific
+									or exceptional they are relative to others. More exceptional statements are assigned higher ranks.
                                 </p>
 
-																<span class="image right"><img src="images/rc-table-1.png" /></span>
+																<span class="image right"><img src="images/rc-ranked-removed.png" /></span>
 
                                 <p>
-                                    The Rational Closure algorithm uses the ranking of known statements to check whether we can conclude our the query
-                                    statement from the known statements. When the left-hand side of our query statement is false, according to known
-                                    statements, then the query statement is trivially true. So, we remove the least typical level in the ranking, since
-                                    some of the statements in this level must be causing the left-hand side to be false.
+									The second step happens when querying the knowledge base (e.g., about platypuses), where general statements at lower ranks are progressively filtered out, leaving
+									only the most relevant, specific information. This ensures that exceptions are handled effectively, allowing conclusions to reflect
+									both general rules and exceptional cases.
                                 </p>
-
-																<span class="image left"><img src="images/rc-table-2.png" /></span>
-
-                                <p>
-                                    When the left-hand side of our query statement is true, given the remaining ranked statements, then the query
-                                    statement may be false. So, we need to check whether the query statement is true, given the remaining statements.
-                                    If it is then we can conclude that it is true in our world; otherwise we conclude that the query is false.
-                                </p>
-
-																<span class="image fit-ish"><img src="images/penguin-conclude.png" /></span>
 
                                 <!-- Lexicographic/Relevant Closure -->
                                 <!-- </section> -->
