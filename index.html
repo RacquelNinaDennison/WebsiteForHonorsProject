@@ -44,7 +44,8 @@
 							<li><a href="#intro" class="active">Introduction</a></li>
 							<li><a href="#background">Background</a></li>
 							<li><a href="#objectives">Objectives</a></li>
-							<li><a href="#ddd">Defeasible Disjunctive Datalog</a></li>
+							<li><a href="#ddd">ASP Definition of Rational Closure</a></li>
+							<li><a href="#kbg">Knowledge base generator</a></li>
 							<li><a href="#conclusions">Conclusions</a></li>
 							<li><a href="#resources">Resources</a></li>
 							<li><a href="#team">Team</a></li>
@@ -202,17 +203,46 @@
 						<!-- Defeasible Disjunctive Datalog -->
 							<section id="ddd" class="main">
 								<header class="major">
-									<h2>Defeasible Disjunctive Datalog</h2>
+									<h2>ASP Definition of Rational Closure</h2>
 								</header>
 								
 							</section>
+							<section id="kbg" class="main">
+								<header class="major">
+									<h2>Knowledge Base Generator</h2>
+								</header>
+								<p>One of the aims was to define a set of rules that generate knowledge bases for testing our ASP definition of Rational Closure. A parameterised knowledge base was defined which allowed for generating knowledge bases with different features:</p>
+								<ul>
+									<li>Allow users to specify how many defeasible statements they would like in the knowledge bases.</li>
+									<li>Allow users to specify how many defeasible ranks they would like in the knowledge bases.</li>
+									<li>Specify how the statements should be distributed among the ranks. Three distributions were defined:
+										<ul>
+											<li>Uniform: Statements are distributed evenly among ranks.</li>
+											<li>Random: A random assignment of the number of statements per rank.</li>
+											<li>Linear: The number of statements per rank grows linearly.</li>
+										</ul>
+									</li>
+									<li>Knowledge bases with the inclusion of classical statements.</li>
+									<li>Encoded classical statements as defeasible statements in the knowledge base.</li>
+								</ul>
+								For example, given the ranked knowledge base:
+								<span class="image fit-ish"><img src="images/knowledge-base-gen.png" /></span>
+								<p>In our generator, the following is obtained:</p>
+								<pre><code>defeasible(a(0),a(5)) defeasible(a(0),a(9)) defeasible(a(0),l0)</code></pre>
+								<pre><code>defeasible(a(1),a(5)) defeasible(a(1),a(0)) defeasible(a(1),-l0)</code></pre>
+								<pre><code>defeasible(a(2),l0) defeasible(a(2),a(4)) defeasible(a(2),a(7)) defeasible(a(2),a(1))</code></pre>
+
+							<p> The knowledge base generator was tested on its generation time. We explored different solver configurations offered by clasp when running experiments.</p>
+							</section>
+							
+
 
 						<!-- Conclusions -->
 							<section id="conclusions" class="main">
 								<header class="major">
 									<h2>Conclusions</h2>
 								</header>
-								<p>
+								<!-- <p>
 									KLM-style defeasible reasoning can be extended to Disjunctive Datalog. In particular:
 								</p>
 								<ol>
@@ -231,7 +261,7 @@
 									<li>
 										The extended Lexicographic Closure algorithm satisfies the KLM properties for Datalog. (Ross)
 									</li>
-								</ol>
+								</ol> -->
 							</section>
 
 						<!-- Resourcess -->
@@ -243,9 +273,9 @@
 									For further project details, please see the following project documentation:
 								</p>
 								<ul class="features">
-									<!-- Matt's output -->
+									<!-- Sibus's output -->
 									<li>
-										<h3>Matthew Morris</h3>
+										<h3>Sibusiso Buthlezi</h3>
 										<ul class="actions fit">
 											<li><a href="files/matt-lit-review.pdf" target="_blank" class="button">Literature Review</a></li>
 										</ul>
@@ -255,7 +285,16 @@
 									</li>
 									<!-- Tala's output -->
 									<li>
-										<h3>Tala Ross</h3>
+										<h3>Racquel Dennison</h3>
+										<ul class="actions fit">
+											<li><a href="files/RacquelLiteratureReview.pdf" target="_blank" class="button">Literature Review</a></li>
+										</ul>
+										<ul class="actions fit">
+											<li><a href="files/RacquelFinalPaper.pdf" target="_blank" class="button">Project Paper</a></li>
+										</ul>
+									</li>
+									<li>
+										<h3>Jack Mabotja</h3>
 										<ul class="actions fit">
 											<li><a href="files/tala-lit-review.pdf" target="_blank" class="button">Literature Review</a></li>
 										</ul>
@@ -267,10 +306,10 @@
 									<li>
 										<h3>Overall Project</h3>
 										<ul class="actions fit">
-											<li><a href="files/proposal.pdf" target="_blank" class="button">Project Proposal</a></li>
+											<li><a href="files/Defeasible Conditionals Research Proposal.pdf" target="_blank" class="button">Project Proposal</a></li>
 										</ul>
 										<ul class="actions fit">
-											<li><a href="files/poster.pdf" target="_blank" class="button">Project Poster</a></li>
+											<li><a href="files/Inspo Pics DCASP Poster.pdf" target="_blank" class="button">Project Poster</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -282,11 +321,11 @@
 									<h2>Team</h2>
 								</header>
 								<ul class="features">
-									<!-- Author: Matthew Morris -->
+									
 									<li>
 										<!-- Placeholder image: -->
-										<span class="image fit"><img src="images/matt-profile.jpg" alt="Head shot of Matthew Morris" style="border-radius:50%;"/></span>
-										<h2>Matthew Morris</h2>
+									
+										<h2>Sibusiso Buthlezi</h2>
 										<h3>Author</h3>
 										<!-- <p>
 											<a href="mailto:matthewthemorris@gmail.com" target="_blank">matthewthemorris@gmail.com</a>
@@ -303,31 +342,51 @@
 											</div>
 										</div>
 									</li>
-									<!-- Author: Tala Ross -->
+									<!-- Author: Racquel Dennison -->
 									<li>
 										<!-- Placeholder image: -->
-										<span class="image fit"><img src="images/tala-profile.jpg" alt="Head shot of Tala Ross" style="border-radius:50%;"/></span>
-										<h2>Tala Ross</h2>
+										
+										<h2>Racquel Dennison</h2>
 										<h3>Author</h3>
 										<!-- <p>
 											<a href="mailto:rsstal002@myuct.ac.za" target="_blank">rsstal002@myuct.ac.za</a>
 										</p> -->
 										<div class="row aln-center">
 											<div class="col-2">
-												<a href="mailto:rsstal002@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+												<a href="mailto:dnnrac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
 											</div>
 											<div class="col-2">
-												<a href="https://github.com/TalaJRoss" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+												<a href="https://github.com/RacquelNinaDennison" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
 											</div>
 											<div class="col-2">
-												<a href="https://www.linkedin.com/in/talajross/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+												<a href="https://www.linkedin.com/in/racquel-nina-dennison/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<!-- Placeholder image: -->
+										
+										<h2>Jack Mabotja</h2>
+										<h3>Author</h3>
+										<!-- <p>
+											<a href="mailto:rsstal002@myuct.ac.za" target="_blank">rsstal002@myuct.ac.za</a>
+										</p> -->
+										<div class="row aln-center">
+											<div class="col-2">
+												<a href="mailto:dnnrac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://github.com/RacquelNinaDennison" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://www.linkedin.com/in/racquel-nina-dennison/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
 											</div>
 										</div>
 									</li>
 									<!-- Supervisor: Tommie Meyer -->
 									<li>
 											<!-- Placeholder image: -->
-											<span class="image fit"><img src="images/tommie-profile.jpg" alt="Head shot of Tommie Meyer" style="border-radius:50%;"/></span>
+											
 											<h2>Tommie Meyer</h2>
 											<h3>Supervisor</h3>
 											<!-- <p>
@@ -339,6 +398,17 @@
 												</div>
 											</div>
 									</li>
+									<li>
+										<!-- Placeholder image: -->
+										
+										<h2>Jesse Heyninick</h2>
+										<h3>Supervisor</h3>
+										<div class="row aln-center">
+											<div class="col-2">
+												<a href="mailto:jesse.heyninck@ou.nl" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+											</div>
+										</div>
+								</li>
 								</ul>
 							</section>
 
