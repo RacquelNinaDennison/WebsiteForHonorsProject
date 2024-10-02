@@ -248,20 +248,63 @@
 									<h2>Objectives</h2>
 								</header>
 								<p>
-									The primary objective of the project is to extend KLM-style defeasible reasoning to Disjunctive Datalog.
-									This is achieved by:
+									<ul>
+										<li>Devise an implementation of Rational Closure based on ASP</li>
+										<li>Devise an implementation of a knowledge base generator based on ASP</li>
+										<li>Create an interpreter application to integrate Rational Closure and the knowledge base generator to improve usability and understanding of Rational Closure</li>
+									  </ul>									  
 								</p>
 								
 							
 							</section>
 
-						<!-- Defeasible Disjunctive Datalog -->
-							<section id="ddd" class="main">
+						<!-- RC in ASP -->
+							<section id="asp-rc" class="main">
 								<header class="major">
 									<h2>ASP Definition of Rational Closure</h2>
 								</header>
+								<p>
+									We used two approaches to implement Rational Closure in ASP. The first
+									approach was defined after the first approach was tested and its limitations
+									were identified.
+								</p>
+								<ol>
+									<h3><li>Search-based Approach</li></h3>
+									<P>
+										In this approach, Rational Closure is treated like a search problem.
+										The procedure is defined below:
+										<ul>
+											<li>We start by defining the characteristics of the target solution we seek.</li>
+											<li>We then enumerate the whole search space.</li>
+											<li>We search through the search space to find our target.</li>
+											<li>After identifying the solution, we then return it.</li>
+										</ul>
+									</P>
+
+									<P>
+										The benchmark results of the search-based approach illuminated two bottlenecks of the approach:
+										<ul>
+											<li>The search space size increases exponentially, making the implementation harder to scale.</li>
+											<li>
+												In most cases, there are multiple solutions that satisfy the characteristics of our target solution,
+												requiring optimisation to find the most optimal solution.
+											</li>
+										</ul>
+									</P>
+									<h3><li>Recursive Approach</li></h3>
+									<p>
+										In this approach, Rational CLosure is restated recursively.
+										This approach eliminates both bottlenecks in the search-based approach.
+									</p>
+								  </ol>
+								  
+								  <p>
+									The two implementation approaches were benchmarked against an existing imperative
+									implementation of Rational CLosure. The results are shown below:
+								  </p>
 								
 							</section>
+
 							<section id="kbg" class="main">
 								<header class="major">
 									<h2>Knowledge Base Generator</h2>
@@ -297,26 +340,10 @@
 								<header class="major">
 									<h2>Conclusions</h2>
 								</header>
-								<!-- <p>
-									KLM-style defeasible reasoning can be extended to Disjunctive Datalog. In particular:
-								</p>
-								<ol>
-									<li>
-										The KLM properties can be extended to the Datalog case by using an extended version of
-										the Datalog logic to express the properties. The extension retains the intended meaning of the
-										original properties. (Joint work)
-									</li>
-									<li>
-										The extended Rational Closure algorithm satisfies the KLM properties for Datalog. (Joint work)
-									</li>
-									<li>
-										There is an extension of the Relevant Closure algorithm for Datalog. However, as found for
-										the propositional case, the algorithm does not satisfy all of the KLM properties for Datalog. (Morris)
-									</li>
-									<li>
-										The extended Lexicographic Closure algorithm satisfies the KLM properties for Datalog. (Ross)
-									</li>
-								</ol> -->
+								<ul>
+									<li>The recursive approach is the more ideal for implementing Rational CLosure in ASP than the search-based approach.</li>
+									<li>The recursive approach Rational Closure implementation in ASP is more efficient than the existing imperative implementation.</li>
+								</ul>
 							</section>
 
 						<!-- Resourcess -->
@@ -338,7 +365,7 @@
 											<li><a href="files/matt-paper.pdf" target="_blank" class="button">Project Paper</a></li>
 										</ul>
 									</li>
-									<!-- Tala's output -->
+									<!-- Racquel's output -->
 									<li>
 										<h3>Racquel Dennison</h3>
 										<ul class="actions fit">
@@ -348,13 +375,14 @@
 											<li><a href="files/RacquelFinalPaper.pdf" target="_blank" class="button">Project Paper</a></li>
 										</ul>
 									</li>
+									<!-- Jack's output -->
 									<li>
 										<h3>Jack Mabotja</h3>
 										<ul class="actions fit">
-											<li><a href="files/tala-lit-review.pdf" target="_blank" class="button">Literature Review</a></li>
+											<li><a href="files/DCASP_MBTJAC003_Literature_Review.pdf" target="_blank" class="button">Literature Review</a></li>
 										</ul>
 										<ul class="actions fit">
-											<li><a href="files/tala-paper.pdf" target="_blank" class="button">Project Paper</a></li>
+											<li><a href="files/DCASP_MBTJAC003_Final_Paper.pdf" target="_blank" class="button">Project Paper</a></li>
 										</ul>
 									</li>
 									<!-- Overall project resources -->
@@ -383,7 +411,7 @@
 										<h2>Sibusiso Buthlezi</h2>
 										<h3>Author</h3>
 										<!-- <p>
-											<a href="mailto:matthewthemorris@gmail.com" target="_blank">matthewthemorris@gmail.com</a>
+											<a href="mailto:bthsib016@myuct.ac.za" target="_blank">bthsib016@myuct.ac.za</a>
 										</p> -->
 										<div class="row aln-center">
 											<div class="col-2">
@@ -418,23 +446,24 @@
 											</div>
 										</div>
 									</li>
+									<!-- Author: Jack Mabotja -->
 									<li>
 										<!-- Placeholder image: -->
 										
 										<h2>Jack Mabotja</h2>
 										<h3>Author</h3>
 										<!-- <p>
-											<a href="mailto:rsstal002@myuct.ac.za" target="_blank">rsstal002@myuct.ac.za</a>
+											<a href="mailto:mbtjac003@myuct.ac.za" target="_blank">mbtjac003@myuct.ac.za</a>
 										</p> -->
 										<div class="row aln-center">
 											<div class="col-2">
-												<a href="mailto:dnnrac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+												<a href="mailto:mbtjac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
 											</div>
 											<div class="col-2">
-												<a href="https://github.com/RacquelNinaDennison" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+												<a href="https://github.com/Jack-Mab" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
 											</div>
 											<div class="col-2">
-												<a href="https://www.linkedin.com/in/racquel-nina-dennison/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+												<a href="https://www.linkedin.com/in/jack-mabotja/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
 											</div>
 										</div>
 									</li>
