@@ -2661,6 +2661,7 @@ input, select, textarea {
 
 		ul.actions.fit {
 			width: calc(100% + 1em);
+
 		}
 
 			ul.actions.fit li {
@@ -2797,7 +2798,9 @@ input, select, textarea {
 	footer.major {
 		margin-top: 3em;
 	}
-
+.buttonspace{
+	margin-bottom: 1em;
+}
 	@media screen and (max-width: 736px) {
 
 		header.major {
