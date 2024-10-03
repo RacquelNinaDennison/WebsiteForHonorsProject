@@ -44,7 +44,7 @@
 							<li><a href="#intro" class="active">Introduction</a></li>
 							<li><a href="#background">Background</a></li>
 							<li><a href="#objectives">Objectives</a></li>
-							<li><a href="#ddd">ASP Definition of Rational Closure</a></li>
+							<li><a href="#asp-rc">ASP Definition of Rational Closure</a></li>
 							<li><a href="#kbg">Knowledge base generator</a></li>
 							<li><a href="#conclusions">Conclusions</a></li>
 							<li><a href="#resources">Resources</a></li>
@@ -150,7 +150,8 @@
                                 <span class="image fit-ish"><img src="images/knowledge-base.png" /></span>
 
                                 <p>
-                                   Defeaible entailment has been defined by many frameworks. The framework focused on in this project is Rational Closure.
+                                   Defeasible entailment has been defined by multiple defeasible entailment relations in the KLM framework.
+								   The entailment relation focused on in this project is Rational Closure.
 								</p>
              
 
@@ -167,7 +168,8 @@
 
                                 <p>
 									The reasoning process involves two main steps. First, the statements in a knowledge base are ranked by exceptionality — how specific
-									or exceptional they are relative to others. More exceptional statements are assigned higher ranks.
+									or exceptional they are relative to others. More exceptional statements are assigned higher ranks. This step is defined by an algorithm
+									called "Base Rank", whose purpose is to rank knowledge bases.
                                 </p>
 
 																<span class="image right"><img src="images/rc-ranked-removed.png" /></span>
@@ -175,7 +177,8 @@
                                 <p>
 									The second step happens when querying the knowledge base (e.g., about platypuses), where general statements at lower ranks are progressively filtered out, leaving
 									only the most relevant, specific information. This ensures that exceptions are handled effectively, allowing conclusions to reflect
-									both general rules and exceptional cases.
+									both general rules and exceptional cases. This step is defined by an algorithm called "Rational Closure", whose purpose is to perform defeasible
+									entailment checks over the ranked knowledge base.
                                 </p>
                                 <!-- Answer Set Programming -->
                                 <header id="asp" class="major">
@@ -241,8 +244,22 @@
 						<!-- RC in ASP -->
 							<section id="asp-rc" class="main">
 								<header class="major">
-									<h2>ASP Definition of Rational Closure</h2>
+									
+									<h2>
+										ASP Definition of Rational Closure
+									</h2>
+									<h3>Jack Mabotja</h3>
 								</header>
+								<h3>Motivation</h3>
+								<p>
+									This part of the project is motivated by the observation that while Rational Closure has been implemented
+									in various imperative programming languages, there has been limited exploration of alternative implementation
+									approaches. This gap in research presents an opportunity to investigate whether different programming paradigms
+									might offer improved performance or other benefits. Our choice of ASP is driven by the hypothesis that its
+									declarative nature might be particularly well-suited to the logical structures inherent in Rational Closure.
+									ASP is known for its ability to separate the logic of algorithms from their control mechanisms, a feature that
+									can potentially enhances programmer efficiency and code clarity.
+								</p>
 								<p>
 									We used two approaches to implement Rational Closure in ASP. The first
 									approach was defined after the first approach was tested and its limitations
@@ -251,6 +268,7 @@
 								<ol>
 									<h3><li>Search-based Approach</li></h3>
 									<P>
+										<span class="image right"><img src="images/perry-searching.png"/></span>
 										In this approach, Rational Closure is treated like a search problem.
 										The procedure is defined below:
 										<ul>
@@ -273,15 +291,66 @@
 									</P>
 									<h3><li>Recursive Approach</li></h3>
 									<p>
-										In this approach, Rational CLosure is restated recursively.
+										In this approach, Rational Closure is restated recursively.
 										This approach eliminates both bottlenecks in the search-based approach.
 									</p>
 								  </ol>
 								  
+								  <h3>Results</h3>
 								  <p>
 									The two implementation approaches were benchmarked against an existing imperative
-									implementation of Rational CLosure. The results are shown below:
+									implementation of Rational Closure. Only Base Rank was benchmarked. The results are shown below:
 								  </p>
+							  <figure class="figure-container">
+								<div class="image-container">
+									<div class="image-wrapper">
+										<img src="/images/search-statements.png" alt="First image description">
+									</div>
+									<div class="image-wrapper">
+										<img src="/images/racquel-statements.png" alt="Second image description">
+									</div>
+									<div class="image-wrapper">
+										<img src="/images/recursive-statements.png" alt="Second image description">
+									</div>
+								</div>
+								<figcaption class="caption">Impact of Statement Count on Base Rank Implementations</figcaption>
+							</figure>
+
+							<figure class="figure-container">
+								<div class="image-container">
+									<div class="image-wrapper">
+										<img src="/images/search-ranks.png" alt="First image description">
+									</div>
+									<div class="image-wrapper">
+										<img src="/images/recursive-ranks.png" alt="Second image description">
+									</div>
+								</div>
+								<figcaption class="caption">Impact of Rank Count on Base Rank Implementations</figcaption>
+							</figure>
+							<div class="highlighted-note">
+								<h3>Note!</h3>
+								<p>
+									<ul>
+										<li> Racquel also created a search-based implementation of Rational Closure in ASP.</li>
+										<li> I created two search-based implementations of Rational Closure.</li>
+										<li> 
+											In the second graph,
+											I plotted the performance of Racquel’s encoding against the
+											defeasible statement count in isolation to clearly demonstrate its
+											behaviour.
+										</li>
+									</ul>
+								</p>
+							</div>
+							<h3>Key Findings:</h3>
+							<ul>
+								<li> The runtimes of the search-based implementation increase exponentially with the statement count.</li>
+								<li> The runtimes of all the search-based BaseRank encodings change with the increase in the rank count, but the
+									change is largely influenced by the statement count.</li>
+								<li> 
+									The recursive approach is the most ideal way to implement Rational Closure in ASP.
+								</li>
+							</ul>
 								
 							</section>
 
@@ -325,7 +394,7 @@
 									<h2>Conclusions</h2>
 								</header>
 								<ul><span class="image left"><img src="images/perry-knowledge.png"/></span>
-									<li>The recursive approach is the more ideal for implementing Rational CLosure in ASP than the search-based approach.</li>
+									<li>The recursive approach is the more ideal for implementing Rational Closure in ASP than the search-based approach.</li>
 									<li>The recursive approach Rational Closure implementation in ASP is more efficient than the existing imperative implementation.</li>
 								</ul>
 							</section>
@@ -444,7 +513,7 @@
 												<a href="mailto:mbtjac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
 											</div>
 											<div class="col-2">
-												<a href="https://github.com/Jack-Mab" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+												<a href="https://github.com/Jack-Mab/dcasp" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
 											</div>
 											<div class="col-2">
 												<a href="https://www.linkedin.com/in/jack-mabotja/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
