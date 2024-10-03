@@ -444,29 +444,54 @@
 					<h2>Rational Closure interpreter</h2>
 				</header>
 				<p>
-					The aim of this section was to create a user-friendly interface that allows users to interact with
-					the ASP implementation of Rational Closure.
-					This tool allows users to use the reasoner without needing to learn about the ASP language.
-					Furthermore, the interpreter provides an explanation service of how the Rational Closure algorithm
+					To facilitate the use of Rational Closure in ASP, we developed the <strong>Rational Closure Interpreter (RCI)</strong>, 
+					a user-friendly graphical user interface that allows users to interact with the reasoner 
+					without needing to learn about the ASP language, offering a more intuitive and accessible experience.
+					Furthermore, the RCI provides an explanation service of how the Rational Closure algorithm
 					works, and how the conclusions are drawn.
 				</p>
 
-				<p>The Rational Closure Interpreter (RCI) is developed in the PyQt framework, and adheres to the
-					Model-View-Controller, Multi-tier Architecture pattern, offering a modular and scalable design.
-
+				<p>The Rational Closure Interpreter is developed in the PyQt framework, a Python library that
+					provides a set of Python bindings for the Qt application framework.
+					In its architecture, RCI adheres to the Model-View-Controller (MVC) pattern and employs a 
+					multi-tier structure, resulting in a modular and scalable design.
+					For the backend, the RCI uses the ASP implementation of Rational Closure, developed by Racqual Dennison.
 				</p>
 				<span class="image mvc"><img src="images/mvc-view.png" /></span>
+
+				<p></p>
+				
+				<h3>
+					Main Features of the Rational Closure Interpreter:
+				</h3>
+				<p> 
+					The Rational Closure Interpreter provides users with 2 main services:
+				</p>
+				<h4>
+					Entailment Checker
+				</h4>
 				<p>
-					 The RCI has the following features:
+					This service allows users to check if a defeasible query is entailed by a knowledge base.
 				</p>
 				<ul>
-
-					<li>Allow users to input a knowledge base manually, upload from disk, or generate one.</li>
-					<li>Allow users input a query to check for entailment.</li>
+					<li>Input, upload, or generate a knowledge base.</li>
+					<li>Enter a defeasible query.</li>
+					<li>Determine if the defeasible query is entailed by the knowledge base.</li>
+				</ul>
+				<h4>
+					Process Visualisation
+				</h4>
+				<p>
+					This service allows users to visualise the process of how the entailment result was reached, providing explanations.
+				</p>
+				<ul>
+					<li>Step through the process of how the entailment result was reached.</li>
+					<li>Highlight the formulas that directly and indirectly influence the entailment of the query.</li>
 				</ul>
 
 				<span class="image rci"><img src="images/RCI-interface.png" /></span>
 				
+				<p></p>
 				
 				<p>The source code for the RCI is publicly available on GitHub <a
 						href="https://github.com/SibusisoButhelezi/Rational-Closure-Interpreter">here</a>
