@@ -5,206 +5,250 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Defeasible Conitions in Answer Set Programming</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<head>
+	<title>Defeasible Conitions in Answer Set Programming</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
 
-				<!-- Header -->
-				<header id="header" class="alt">
-					<h1>Defeasible Conitions in Answer Set Programming</h1>
-					<p>A Computer Science Honours project exploring an algorithmic definition of KLM-style defeasible reasoning for Answer Set Programming</a>.</p>
+<body class="is-preload">
 
-					<span class="image fit"><picture>
-					  <source srcset="images/playtupus.png" media="(min-width: 800px)">
-					  <source srcset="images/playtupus.png" media="(min-width: 360px)">
-					  <img srcset="images/playtupus.png"
-							alt="Comic strip. Frame 1: Two penguins see birds flying; penguin 1 (Pecky) says 'Birds can fly and penguins are birds';
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<h1>Defeasible Conitions in Answer Set Programming</h1>
+			<p>A Computer Science Honours project exploring an algorithmic definition of KLM-style defeasible reasoning
+				for Answer Set Programming</a>.</p>
+
+			<span class="image fit">
+				<picture>
+					<source srcset="images/playtupus.png" media="(min-width: 800px)">
+					<source srcset="images/playtupus.png" media="(min-width: 360px)">
+					<img srcset="images/playtupus.png" alt="Comic strip. Frame 1: Two penguins see birds flying; penguin 1 (Pecky) says 'Birds can fly and penguins are birds';
 							penguin 2 says 'So, penguins can fly'. Frame 2: Penguin 2 jumps off the cliff and cannot fly. Frame 3: Penguin 1 looks
 							down to the bottom of the cliff and remarks 'So, penguins cannot fly'; a textbox reads 'But, penguins are birds so they
 							must fly. So, penguins can and cannot fly, which is impossible. Sooo... no penguins exist!'. Frame 4: Penguin 1 disappears;
 							a textbox reads 'Moral of the story: Not all birds fly. Birds typically fly.'">
-					</picture></span>
-					<ul class="features" style="text-align:center;">
-						<li><a href="#intro" class="button next scrolly" style="display:inline-block;">Project Details</a></li>
-						<li><a href="#resources" class="button next scrolly" style="display:inline-block;">Download</a></li>
-					</ul>
+				</picture>
+			</span>
+			<ul class="features" style="text-align:center;">
+				<li><a href="#intro" class="button next scrolly" style="display:inline-block;">Project Details</a></li>
+				<li><a href="#resources" class="button next scrolly" style="display:inline-block;">Download</a></li>
+			</ul>
+		</header>
+
+		<!-- Navigation -->
+		<nav id="nav">
+			<ul>
+				<li><a href="#intro" class="active">Introduction</a></li>
+				<li><a href="#background">Background</a></li>
+				<li><a href="#objectives">Objectives</a></li>
+				<li><a href="#asp-rc">ASP Definition of Rational Closure</a></li>
+				<li><a href="#kbg">Knowledge base generator</a></li>
+				<li><a href="#conclusions">Conclusions</a></li>
+				<li><a href="#resources">Resources</a></li>
+				<li><a href="#team">Team</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Introduction -->
+			<section id="intro" class="main">
+				<header class="major">
+					<h2>Introduction</h2>
+				</header>
+				<p>
+
+					Knowledge representation and reasoning is a branch of Artifical Intelligence which uses logic to
+					represent knowledge about the world.
+					Automated reasoning methods are used to draw new conclusions from a set of known knowledge.
+					Classical reasoning systems were
+					traditionally used to draw conclusions from sets of statements. Classical reasoning systems are
+					monotonic, which means that
+					all information is certain and adding new information will not retract conclusions previously drawn.
+				</p>
+				<p>
+					For example, Perry the Platypus once used a classical reasoning system. While spending time with
+					Phineas,
+					Perry learned that mammals give birth to live young. Given that they are a platypus and that
+					platypuses are mammals,
+					Perry logically deduced that platypuses must give birth to live young as well. However, Ferb later
+					informed
+					Perry that platypuses actually lay eggs. This contradiction confused Perry, as their reasoning
+					system was
+					not flexible enough to accommodate the new information. Perry's dilemma illustrates a key weakness
+					of classical
+					reasoning: it struggles to handle exceptions or conflicting data.
+					<span class="image left"><img src="images/perry-baby.png" /></span>
+				</p>
+				<p>
+					Defeasible (non-monotonic) reasoning systems would allow Perry to say "mammals typically give birth
+					to live young".
+					When Perry concludes that "platypus do not give birth to live young", the system would retract its
+					previous conclusion
+					that "platypus do give birth to live young". Perry would still exist if they used a "common sense"
+					approach to reasoning.
+					This project explored defeasible entailment relations using Answer Set Programming (ASP)
+				</p>
+
+			</section>
+
+			<!-- Background -->
+			<section id="background" class="main">
+				<header class="major">
+					<h2>Background</h2>
 				</header>
 
-				<!-- Navigation -->
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active">Introduction</a></li>
-							<li><a href="#background">Background</a></li>
-							<li><a href="#objectives">Objectives</a></li>
-							<li><a href="#asp-rc">ASP Definition of Rational Closure</a></li>
-							<li><a href="#kbg">Knowledge base generator</a></li>
-							<li><a href="#conclusions">Conclusions</a></li>
-							<li><a href="#resources">Resources</a></li>
-							<li><a href="#team">Team</a></li>
-						</ul>
-					</nav>
+				<!-- Navigation to each subsection -->
+				<nav id="nav-back">
+					<ul>
+						<li><a href="#prop" class="active">Propositional Logic</a></li>
+						<li><a href="#klm">KLM Approach</a></li>
+						<li><a href="#rc">Rational Closure</a></li>
+						<li><a href="#asp">Answer Set Programming</a></li>
 
-				<!-- Main -->
-					<div id="main">
+					</ul>
+				</nav>
 
-         		<!-- Introduction -->
-							<section id="intro" class="main">
-								<header class="major">
-									<h2>Introduction</h2>
-								</header>
-								<p>
-								
-								Knowledge representation and reasoning is a branch of Artifical Intelligence which uses logic to represent knowledge about the world. 
-								Automated reasoning methods are used to draw new conclusions from a set of known knowledge. Classical reasoning systems were 
-								traditionally used to draw conclusions from sets of statements. Classical reasoning systems are monotonic, which means that 
-								all information is certain and adding new information will not retract conclusions previously drawn. 
-								</p>
-								<p>
-									For example, Perry the Platypus once used a classical reasoning system. While spending time with Phineas, 
-									Perry learned that mammals give birth to live young. Given that they are a platypus and that platypuses are mammals, 
-									Perry logically deduced that platypuses must give birth to live young as well. However, Ferb later informed 
-									Perry that platypuses actually lay eggs. This contradiction confused Perry, as their reasoning system was 
-									not flexible enough to accommodate the new information. Perry's dilemma illustrates a key weakness of classical 
-									reasoning: it struggles to handle exceptions or conflicting data.
-									<span class="image left"><img src="images/perry-baby.png"/></span>
-								</p>
-								<p>
-									Defeasible (non-monotonic) reasoning systems would allow Perry to say "mammals typically give birth to live young". 
-									When Perry concludes that "platypus do not give birth to live young", the system would retract its previous conclusion 
-									that "platypus do give birth to live young". Perry would still exist if they used a "common sense" approach to reasoning.
-									This project explored defeasible entailment relations using Answer Set Programming (ASP)
-								</p>
-								
-							</section>
+				<!-- Propositional Logic -->
+				<header id="prop" class="major">
+					<h3>Propositional Logic</h3>
+				</header>
+				<p>
+					Propositional Logic uses symbols to represent basic
+					statements about the world that are assigned a value of true or false. Boolean operators are used to
+					combine these
+					statements to form more complex statements.
+					<span class="image right"><img src="images/prop-operators.png" /></span>
+				</p>
+				<p>
+					Perry uses the symbols p, m and ly to represent platypus, mammals and liveyoung, respectively. Perry
+					then combines
+					these symbols using boolean operators to make the statements "mammals have liveyoung", "platypus are
+					mammals" and
+					"platypus do not have liveyoung".
+					<span class="image left"><img src="images/perry-classical.png" /></span>
+				</p>
+				<p>
+					Truth tables can be used to define the meaning of each boolean operator. And, those meanings are
+					used
+					to reason about propositional statements. Common questions asked are "What statements can we
+					conclude to be
+					true given the information known?". This is known as classical entailment.
+				</p>
+				<p>
+					<span class="image right"><img src="images/perry-exist.png" /></span>
+					Using truth tables (or more efficient semantic tableau methods), Perry can still logically conclude
+					that
+					"platypus can give birth to liveyoung". But, Perry already knows that "platypus do not give birth to
+					liveyoung" and it is impossible for both
+					of these statements to be true. So, Perry does not exist. To solve this, Perry explored defeasible
+					reasoning which minimcs common sense reasoning.
+				</p>
 
-						<!-- Background -->
-                            <section id="background" class="main">
-                                <header class="major">
-                                    <h2>Background</h2>
-                                </header>
+				<!-- The KLM Approach -->
+				<header id="klm" class="major">
+					<h3>The KLM Approach</h3>
+				</header>
+				<p>
+					The KLM approach, proposed by Kraus, Lehmann and Magidor, is a well known approach to defeasible
+					reasoning. It allows us to represent statements such as "mammals typically give birth to liveyoung"
+					using a defeasible
+					implication operator. Statements which use the defeasible operator as known as defeasible
+					statements.
+				</p>
 
-                                <!-- Navigation to each subsection -->
-                                <nav id="nav-back">
-                                    <ul>
-                                        <li><a href="#prop" class="active">Propositional Logic</a></li>
-                                        <li><a href="#klm">KLM Approach</a></li>
-                                        <li><a href="#rc">Rational Closure</a></li>
-                                        <li><a href="#asp">Answer Set Programming</a></li>
-                                     
-                                    </ul>
-                                </nav>
+				<span class="image fit-ish"><img src="images/mammals-tyically .png" /></span>
 
-                                <!-- Propositional Logic -->
-                                <header id="prop" class="major">
-                                    <h3>Propositional Logic</h3>
-                                </header>
-                                <p>
-                                   Propositional Logic uses symbols to represent basic
-                                    statements about the world that are assigned a value of true or false. Boolean operators are used to combine these
-                                    statements to form more complex statements.
-                                    <span class="image right"><img src="images/prop-operators.png" /></span>
-                                </p>
-                                <p>
-                                    Perry uses the symbols p, m and ly to represent platypus, mammals and liveyoung, respectively. Perry then combines
-                                    these symbols using boolean operators to make the statements "mammals have liveyoung", "platypus are mammals" and
-                                    "platypus do not have liveyoung".
-                                    <span class="image left"><img src="images/perry-classical.png" /></span>
-                                </p>
-                                <p>
-                                    Truth tables can be used to define the meaning of each boolean operator. And, those meanings are used
-                                    to reason about propositional statements. Common questions asked are "What statements can we conclude to be 
-									true given the information known?". This is known as classical entailment. 
-                                </p>
-                                <p>
-                                    <span class="image right"><img src="images/perry-exist.png" /></span>
-                                    Using truth tables (or more efficient semantic tableau methods), Perry can still logically conclude that
-                                    "platypus can give birth to liveyoung". But, Perry already knows that "platypus do not give birth to liveyoung" and it is impossible for both
-                                    of these statements to be true. So, Perry does not exist. To solve this, Perry explored defeasible reasoning which minimcs common sense reasoning.
-                                </p>
+				<p>
+					If Perry tries to conclude that a new defeasible statement is true based on previous statements,
+					classical
+					and defeasible, they can use defeasible entailment to determine the answer.
+				</p>
 
-                                <!-- The KLM Approach -->
-                                <header id="klm" class="major">
-                                    <h3>The KLM Approach</h3>
-                                </header>
-                                <p>
-                                    The KLM approach, proposed by Kraus, Lehmann and Magidor, is a well known approach to defeasible
-                                    reasoning. It allows us to represent statements such as "mammals typically give birth to liveyoung" using a defeasible
-                                    implication operator. Statements which use the defeasible operator as known as defeasible statements. 
-                                </p>
+				<span class="image fit-ish"><img src="images/knowledge-base.png" /></span>
 
-                                <span class="image fit-ish"><img src="images/mammals-tyically .png" /></span>
+				<p>
+					Defeasible entailment has been defined by multiple defeasible entailment relations in the KLM
+					framework.
+					The entailment relation focused on in this project is Rational Closure.
+				</p>
 
-                                <p>
-                                    If Perry tries to conclude that a new defeasible statement is true based on previous statements, classical 
-									and defeasible, they can use defeasible entailment to determine the answer.
-                                </p>
 
-                                <span class="image fit-ish"><img src="images/knowledge-base.png" /></span>
+				<!-- Rational Closure -->
+				<header id="rc" class="major">
+					<h3>Rational Closure</h3>
+				</header>
+				<p>
+					<span class="image left"><img src="images/perry-surprised-2.png" width="200%" /></span>
 
-                                <p>
-                                   Defeasible entailment has been defined by multiple defeasible entailment relations in the KLM framework.
-								   The entailment relation focused on in this project is Rational Closure.
-								</p>
-             
+					Rational Closure is a defeasible entailment formalism within the KLM framework, designed for
+					reasoning with exceptions. It
+					organises knowledge hierarchically, allowing more specific statements to override general ones.
+				</p>
 
-                                <!-- Rational Closure -->
-                                <header id="rc" class="major">
-                                    <h3>Rational Closure</h3>
-                                </header>
-                                <p>
-																		<span class="image left"><img src="images/perry-surprised-2.png" width="200%" /></span>
+				<p>
+					The reasoning process involves two main steps. First, the statements in a knowledge base are ranked
+					by exceptionality — how specific
+					or exceptional they are relative to others. More exceptional statements are assigned higher ranks.
+					This step is defined by an algorithm
+					called "Base Rank", whose purpose is to rank knowledge bases.
+				</p>
 
-									Rational Closure is a defeasible entailment formalism within the KLM framework, designed for reasoning with exceptions. It
-									organises knowledge hierarchically, allowing more specific statements to override general ones.
-                                </p>
+				<span class="image right"><img src="images/rc-ranked-removed.png" /></span>
 
-                                <p>
-									The reasoning process involves two main steps. First, the statements in a knowledge base are ranked by exceptionality — how specific
-									or exceptional they are relative to others. More exceptional statements are assigned higher ranks. This step is defined by an algorithm
-									called "Base Rank", whose purpose is to rank knowledge bases.
-                                </p>
+				<p>
+					The second step happens when querying the knowledge base (e.g., about platypuses), where general
+					statements at lower ranks are progressively filtered out, leaving
+					only the most relevant, specific information. This ensures that exceptions are handled effectively,
+					allowing conclusions to reflect
+					both general rules and exceptional cases. This step is defined by an algorithm called "Rational
+					Closure", whose purpose is to perform defeasible
+					entailment checks over the ranked knowledge base.
+				</p>
+				<!-- Answer Set Programming -->
+				<header id="asp" class="major">
+					<h3>Answer Set Programming</h3>
+				</header>
 
-																<span class="image right"><img src="images/rc-ranked-removed.png" /></span>
+				<p>
+					Before Perry can understand what Answer Set Programming (ASP) is, he needs to understand what a
+					programming paradigm is.
+					A programming paradigm is a style of programming that defines the structure and elements of a
+					program. There are many
+					different programming paradigms, each with its own set of rules and conventions. Most programming
+					languages are based on
+					the imperative programming paradigm, which uses statements to change the state of a program.
+					However, Answer Set Programming
+					(ASP) is a declarative programming paradigm that uses logic to represent knowledge and solve
+					problems.
+					Below is the distinguishing features of a declarative programming paradigm and an imperative
+					programming paradigm:
+				</p>
 
-                                <p>
-									The second step happens when querying the knowledge base (e.g., about platypuses), where general statements at lower ranks are progressively filtered out, leaving
-									only the most relevant, specific information. This ensures that exceptions are handled effectively, allowing conclusions to reflect
-									both general rules and exceptional cases. This step is defined by an algorithm called "Rational Closure", whose purpose is to perform defeasible
-									entailment checks over the ranked knowledge base.
-                                </p>
-                                <!-- Answer Set Programming -->
-                                <header id="asp" class="major">
-                                    <h3>Answer Set Programming</h3>
-                                </header>
+				<span class="image fit-ish"><img src="images/declarative-vs-imperative.png" /></span>
 
-								<p>
-									Before Perry can understand what Answer Set Programming (ASP) is, he needs to understand what a programming paradigm is. 
-									A programming paradigm is a style of programming that defines the structure and elements of a program. There are many 
-									different programming paradigms, each with its own set of rules and conventions. Most programming languages are based on 
-									the imperative programming paradigm, which uses statements to change the state of a program. However, Answer Set Programming 
-									(ASP) is a declarative programming paradigm that uses logic to represent knowledge and solve problems.
-									Below is the distinguishing features of a declarative programming paradigm and an imperative programming paradigm:
-								</p>
-
-								<span class="image fit-ish"><img src="images/declarative-vs-imperative.png" /></span>
-
-								<!-- Can add a comparison between imperative and declarative programming here -->
-                                <p>
-									Answer Set Programming (ASP) is a declarative programming paradigm that uses logic to represent knowledge and solve problems.
-									ASP programs are written in a logic-based language and are used to represent a set of rules and facts. The rules are used to
-									define the problem and the facts are used to define the initial state of the problem. The ASP solver then uses these rules and
-									facts to find a solution to the problem. Rules in ASP are of the following form:
-								</p>
-								<span class="image fit-ish"><img src="images/asp-rules.png" /></span>
-							<!-- =
+				<!-- Can add a comparison between imperative and declarative programming here -->
+				<p>
+					Answer Set Programming (ASP) is a declarative programming paradigm that uses logic to represent
+					knowledge and solve problems.
+					ASP programs are written in a logic-based language and are used to represent a set of rules and
+					facts. The rules are used to
+					define the problem and the facts are used to define the initial state of the problem. The ASP solver
+					then uses these rules and
+					facts to find a solution to the problem. Rules in ASP are of the following form:
+				</p>
+				<span class="image fit-ish"><img src="images/asp-rules.png" /></span>
+				<!-- =
 								<p>
 									The ASP solver uses a grounding process to convert the rules and facts into a propositional logic program. The solver then
 									uses a search algorithm to find the answer sets of the program. An answer set is a set of facts that satisfy the rules of the
@@ -222,404 +266,463 @@
 									a different combination of rules and facts.
 								</p> -->
 
-								<!-- Can remove this -->
-								<!-- <p>
+				<!-- Can remove this -->
+				<!-- <p>
 									The ASP solver can use different search algorithms to find the answer sets of the program. The solver can use a depth-first
 									search algorithm to explore the possible combinations of rules and facts. The solver can also use a conflict-driven clause
 									learning algorithm to find the answer sets. The solver uses a conflict-driven clause learning algorithm to learn from the
 									conflicts in the program and find the answer sets.
 								</p> -->
-								<p>
-									Example: If Perry were to take all the facts they have learn't about mammals and platypus, they can represent it as the following ASP rules: 
-								</p>
-								<span class="image fit-ish"><img src="images/asp-example-perry.png" /></span>
-                                </section>
+				<p>
+					Example: If Perry were to take all the facts they have learn't about mammals and platypus, they can
+					represent it as the following ASP rules:
+				</p>
+				<span class="image fit-ish"><img src="images/asp-example-perry.png" /></span>
+			</section>
 
 
-						<!-- Objectives -->
-							<section id="objectives" class="main">
-								<header class="major">
-									<h2>Objectives</h2>
-								</header>
-								<p>
-									<ul>
-										<li>Devise an implementation of Rational Closure based on ASP</li>
-										<li>Devise an implementation of a knowledge base generator based on ASP</li>
-										<li>Create an interpreter application to integrate Rational Closure and the knowledge base generator to improve usability and understanding of Rational Closure</li>
-									  </ul>									  
-								</p>
-								
-							
-							</section>
-
-						<!-- RC in ASP -->
-							<section id="asp-rc" class="main">
-								<header class="major">
-									
-									<h2>
-										ASP Definition of Rational Closure
-									</h2>
-									<h3>Jack Mabotja</h3>
-								</header>
-								<h3>Motivation</h3>
-								<p>
-									This part of the project is motivated by the observation that while Rational Closure has been implemented
-									in various imperative programming languages, there has been limited exploration of alternative implementation
-									approaches. This gap in research presents an opportunity to investigate whether different programming paradigms
-									might offer improved performance or other benefits. Our choice of ASP is driven by the hypothesis that its
-									declarative nature might be particularly well-suited to the logical structures inherent in Rational Closure.
-									ASP is known for its ability to separate the logic of algorithms from their control mechanisms, a feature that
-									can potentially enhances programmer efficiency and code clarity.
-								</p>
-								<p>
-									We used two approaches to implement Rational Closure in ASP. The first
-									approach was defined after the first approach was tested and its limitations
-									were identified.
-								</p>
-								<ol>
-									<h3><li>Search-based Approach</li></h3>
-									<P>
-										<span class="image right"><img src="images/perry-searching.png"/></span>
-										In this approach, Rational Closure is treated like a search problem.
-										The procedure is defined below:
-										<ul>
-											<li>We start by defining the characteristics of the target solution we seek.</li>
-											<li>We then enumerate the whole search space.</li>
-											<li>We search through the search space to find our target.</li>
-											<li>After identifying the solution, we then return it.</li>
-										</ul>
-									</P>
-
-									<P>
-										The benchmark results of the search-based approach illuminated two bottlenecks of the approach:
-										<ul>
-											<li>The search space size increases exponentially, making the implementation harder to scale.</li>
-											<li>
-												In most cases, there are multiple solutions that satisfy the characteristics of our target solution,
-												requiring optimisation to find the most optimal solution.
-											</li>
-										</ul>
-									</P>
-									<h3><li>Recursive Approach</li></h3>
-									<p>
-										In this approach, Rational Closure is restated recursively.
-										This approach eliminates both bottlenecks in the search-based approach.
-									</p>
-								  </ol>
-								  
-								  <h3>Results</h3>
-								  <p>
-									The two implementation approaches were benchmarked against an existing imperative
-									implementation of Rational Closure. Only Base Rank was benchmarked. The results are shown below:
-								  </p>
-							  <figure class="figure-container">
-								<div class="image-container">
-									<div class="image-wrapper">
-										<img src="/images/search-statements.png" alt="First image description">
-									</div>
-									<div class="image-wrapper">
-										<img src="/images/racquel-statements.png" alt="Second image description">
-									</div>
-									<div class="image-wrapper">
-										<img src="/images/recursive-statements.png" alt="Second image description">
-									</div>
-								</div>
-								<figcaption class="caption">Impact of Statement Count on Base Rank Implementations</figcaption>
-							</figure>
-
-							<figure class="figure-container">
-								<div class="image-container">
-									<div class="image-wrapper">
-										<img src="/images/search-ranks.png" alt="First image description">
-									</div>
-									<div class="image-wrapper">
-										<img src="/images/recursive-ranks.png" alt="Second image description">
-									</div>
-								</div>
-								<figcaption class="caption">Impact of Rank Count on Base Rank Implementations</figcaption>
-							</figure>
-							<div class="highlighted-note">
-								<h3>Note!</h3>
-								<p>
-									<ul>
-										<li> Racquel also created a search-based implementation of Rational Closure in ASP.</li>
-										<li> I created two search-based implementations of Rational Closure.</li>
-										<li> 
-											In the second graph,
-											I plotted the performance of Racquel’s encoding against the
-											defeasible statement count in isolation to clearly demonstrate its
-											behaviour.
-										</li>
-									</ul>
-								</p>
-							</div>
-							<h3>Key Findings:</h3>
-							<ul>
-								<li> The runtimes of the search-based implementation increase exponentially with the statement count.</li>
-								<li> The runtimes of all the search-based BaseRank encodings change with the increase in the rank count, but the
-									change is largely influenced by the statement count.</li>
-								<li> 
-									The recursive approach is the most ideal way to implement Rational Closure in ASP.
-								</li>
-							</ul>
-								
-							</section>
-
-							<section id="rci" class="main">
-								<header class="major">
-									<h2>Rational Closure interpreter</h2>
-								</header>
-								<p>
-									The aim of this section was to create a user-friendly interface that allows users to interact with the Rational Closure implementation.
-									Furthermore, the interpreter provides an explanation service of how the Rational Closure algorithm works, and how 
-									the conclusions are drawn. The interpreter was implemented using the PyQt web framework.
-								</p>
-								<ul>
-									
-									<li>Allow users to input a knowledge base manually, upload from disk, or generate one.</li>
-									<li>Allow users input a query to check for entailment.</li>
-																	</ul>
-								
-								
-								<!-- Include image of RCI -->
-								<span class="image fit-ish"><img src="images/RCI-interface.png" /></span>
-								<p>The code for the RCI can be found on GitHub <a href="https://github.com/SibusisoButhelezi/Rational-Closure-Interpreter">here</a></p>
-								<!-- Include link to github -->
-								 
-							
-							</section>
-							
-							<section id="kbg" class="main">
-								<header class="major">
-									<h2>Knowledge Base Generator</h2>
-								</header>
-								<p>One of the aims was to define a set of rules that generate knowledge bases for testing our ASP definition of Rational Closure. A parameterised knowledge base was defined which allowed for generating knowledge bases with different features:</p>
-								<ul>
-									
-									<li>Allow users to specify how many defeasible statements they would like in the knowledge bases.</li>
-									<li>Allow users to specify how many defeasible ranks they would like in the knowledge bases.</li>
-									
-									<li>Specify how the statements should be distributed among the ranks. Three distributions were defined:
-										<ul>
-											<li>Uniform: Statements are distributed evenly among ranks.</li>
-											<li>Random: A random assignment of the number of statements per rank.</li>
-											<li>Linear: The number of statements per rank grows linearly.</li>
-										</ul>
-									</li>
-									<li>Knowledge bases with the inclusion of classical statements.</li>
-									<li>Encoded classical statements as defeasible statements in the knowledge base.</li>
-								</ul>
-								
-								For example, given the ranked knowledge base:
-								
-								<span class="image fit-ish"><img src="images/knowledge-base-gen.png" /></span>
-								<p>In our generator, the following is obtained:</p>
-								<pre><code>defeasible(a(0),a(5)) defeasible(a(0),a(9)) defeasible(a(0),l0)</code></pre>
-								<pre><code>defeasible(a(1),a(5)) defeasible(a(1),a(0)) defeasible(a(1),-l0)</code></pre>
-								<pre><code>defeasible(a(2),l0) defeasible(a(2),a(4)) defeasible(a(2),a(7)) defeasible(a(2),a(1))</code></pre>
-
-							<p> The knowledge base generator was tested on its generation time. We explored different solver configurations offered by clasp when running experiments.</p>
-							</section>
+			<!-- Objectives -->
+			<section id="objectives" class="main">
+				<header class="major">
+					<h2>Objectives</h2>
+				</header>
+				<p>
+				<ul>
+					<li>Devise an implementation of Rational Closure based on ASP</li>
+					<li>Devise an implementation of a knowledge base generator based on ASP</li>
+					<li>Create an interpreter application to integrate Rational Closure and the knowledge base generator
+						to improve usability and understanding of Rational Closure</li>
+				</ul>
+				</p>
 
 
-						<!-- Conclusions -->
-							<section id="conclusions" class="main">
-								<header class="major">
-									<h2>Conclusions</h2>
-								</header>
-								<ul><span class="image left"><img src="images/perry-knowledge.png"/></span>
-									<li>The recursive approach is the more ideal for implementing Rational Closure in ASP than the search-based approach.</li>
-									<li>The recursive approach Rational Closure implementation in ASP is more efficient than the existing imperative implementation.</li>
-								</ul>
-							</section>
+			</section>
 
-						<!-- Resourcess -->
-							<section id="resources" class="main special">
-								<header class="major">
-									<h2>Resources</h2>
-								</header>
-								<p>
-									For further project details, please see the following project documentation:
-								</p>
-								<ul class="features">
-									<!-- Sibus's output -->
-									<li>
-										<h3>Sibusiso Buthlezi</h3>
-										<ul class="actions fit">
-											<li><a href="files/SibusisoLiteratureReview.pdf" target="_blank" class="button">Literature Review</a></li>
-										</ul>
-										<ul class="actions fit">
-											<li><a href="files/SibusisoFinalPaper.pdf" target="_blank" class="button">Project Paper</a></li>
-										</ul>
-									</li>
-									<!-- Racquel's output -->
-									<li>
-										<h3>Racquel Dennison</h3>
-										<ul class="actions fit">
-											<li><a href="files/RacquelLiteratureReview.pdf" target="_blank" class="button">Literature Review</a></li>
-										</ul>
-										<ul class="actions fit">
-											<li><a href="files/RacquelFinalPaper.pdf" target="_blank" class="button">Project Paper</a></li>
-										</ul>
-									</li>
-									<!-- Jack's output -->
-									<li>
-										<h3>Jack Mabotja</h3>
-										<ul class="actions fit">
-											<li><a href="files/DCASP_MBTJAC003_Literature_Review.pdf" target="_blank" class="button">Literature Review</a></li>
-										</ul>
-										<ul class="actions fit">
-											<li><a href="files/DCASP_MBTJAC003_Final_Paper.pdf" target="_blank" class="button">Project Paper</a></li>
-										</ul>
-									</li>
-									<!-- Overall project resources -->
-									<li>
-										<h3>Overall Project</h3>
-										<ul class="actions fit">
-											<li><a href="files/Defeasible Conditionals Research Proposal.pdf" target="_blank" class="button">Project Proposal</a></li>
-										</ul>
-										<ul class="actions fit">
-											<li><a href="files/Inspo Pics DCASP Poster.pdf" target="_blank" class="button">Project Poster</a></li>
-										</ul>
-									</li>
-								</ul>
-							</section>
+			<!-- RC in ASP -->
+			<section id="asp-rc" class="main">
+				<header class="major">
 
-						<!-- Team -->
-							<section id="team" class="main special">
-								<header class="major">
-									<h2>Team</h2>
-								</header>
-								<ul class="features">
-									
-									<li>
-										<!-- Placeholder image: -->
-									<!-- Author: Sibusiso Buthelezi -->
-										<h2>Sibusiso Buthlezi</h2>
-										<h3>Author</h3>
-										<!-- <p>
+					<h2>
+						ASP Definition of Rational Closure
+					</h2>
+					<h3>Jack Mabotja</h3>
+				</header>
+				<h3>Motivation</h3>
+				<p>
+					This part of the project is motivated by the observation that while Rational Closure has been
+					implemented
+					in various imperative programming languages, there has been limited exploration of alternative
+					implementation
+					approaches. This gap in research presents an opportunity to investigate whether different
+					programming paradigms
+					might offer improved performance or other benefits. Our choice of ASP is driven by the hypothesis
+					that its
+					declarative nature might be particularly well-suited to the logical structures inherent in Rational
+					Closure.
+					ASP is known for its ability to separate the logic of algorithms from their control mechanisms, a
+					feature that
+					can potentially enhances programmer efficiency and code clarity.
+				</p>
+				<p>
+					We used two approaches to implement Rational Closure in ASP. The first
+					approach was defined after the first approach was tested and its limitations
+					were identified.
+				</p>
+				<ol>
+					<h3>
+						<li>Search-based Approach</li>
+					</h3>
+					<P>
+						<span class="image right"><img src="images/perry-searching.png" /></span>
+						In this approach, Rational Closure is treated like a search problem.
+						The procedure is defined below:
+					<ul>
+						<li>We start by defining the characteristics of the target solution we seek.</li>
+						<li>We then enumerate the whole search space.</li>
+						<li>We search through the search space to find our target.</li>
+						<li>After identifying the solution, we then return it.</li>
+					</ul>
+					</P>
+
+					<P>
+						The benchmark results of the search-based approach illuminated two bottlenecks of the approach:
+					<ul>
+						<li>The search space size increases exponentially, making the implementation harder to scale.
+						</li>
+						<li>
+							In most cases, there are multiple solutions that satisfy the characteristics of our target
+							solution,
+							requiring optimisation to find the most optimal solution.
+						</li>
+					</ul>
+					</P>
+					<h3>
+						<li>Recursive Approach</li>
+					</h3>
+					<p>
+						In this approach, Rational Closure is restated recursively.
+						This approach eliminates both bottlenecks in the search-based approach.
+					</p>
+				</ol>
+
+				<h3>Results</h3>
+				<p>
+					The two implementation approaches were benchmarked against an existing imperative
+					implementation of Rational Closure. Only Base Rank was benchmarked. The results are shown below:
+				</p>
+				<figure class="figure-container">
+					<div class="image-container">
+						<div class="image-wrapper">
+							<img src="/images/search-statements.png" alt="First image description">
+						</div>
+						<div class="image-wrapper">
+							<img src="/images/racquel-statements.png" alt="Second image description">
+						</div>
+						<div class="image-wrapper">
+							<img src="/images/recursive-statements.png" alt="Second image description">
+						</div>
+					</div>
+					<figcaption class="caption">Impact of Statement Count on Base Rank Implementations</figcaption>
+				</figure>
+
+				<figure class="figure-container">
+					<div class="image-container">
+						<div class="image-wrapper">
+							<img src="/images/search-ranks.png" alt="First image description">
+						</div>
+						<div class="image-wrapper">
+							<img src="/images/recursive-ranks.png" alt="Second image description">
+						</div>
+					</div>
+					<figcaption class="caption">Impact of Rank Count on Base Rank Implementations</figcaption>
+				</figure>
+				<div class="highlighted-note">
+					<h3>Note!</h3>
+					<p>
+					<ul>
+						<li> Racquel also created a search-based implementation of Rational Closure in ASP.</li>
+						<li> I created two search-based implementations of Rational Closure.</li>
+						<li>
+							In the second graph,
+							I plotted the performance of Racquel’s encoding against the
+							defeasible statement count in isolation to clearly demonstrate its
+							behaviour.
+						</li>
+					</ul>
+					</p>
+				</div>
+				<h3>Key Findings:</h3>
+				<ul>
+					<li> The runtimes of the search-based implementation increase exponentially with the statement
+						count.</li>
+					<li> The runtimes of all the search-based BaseRank encodings change with the increase in the rank
+						count, but the
+						change is largely influenced by the statement count.</li>
+					<li>
+						The recursive approach is the most ideal way to implement Rational Closure in ASP.
+					</li>
+				</ul>
+
+			</section>
+
+
+			<section id="kbg" class="main">
+				<header class="major">
+					<h2>Knowledge Base Generator</h2>
+				</header>
+				<p>One of the aims was to define a set of rules that generate knowledge bases for testing our ASP
+					definition of Rational Closure. A parameterised knowledge base was defined which allowed for
+					generating knowledge bases with different features:</p>
+				<ul>
+
+					<li>Allow users to specify how many defeasible statements they would like in the knowledge bases.
+					</li>
+					<li>Allow users to specify how many defeasible ranks they would like in the knowledge bases.</li>
+
+					<li>Specify how the statements should be distributed among the ranks. Three distributions were
+						defined:
+						<ul>
+							<li>Uniform: Statements are distributed evenly among ranks.</li>
+							<li>Random: A random assignment of the number of statements per rank.</li>
+							<li>Linear: The number of statements per rank grows linearly.</li>
+						</ul>
+					</li>
+					<li>Knowledge bases with the inclusion of classical statements.</li>
+					<li>Encoded classical statements as defeasible statements in the knowledge base.</li>
+				</ul>
+
+				For example, given the ranked knowledge base:
+
+				<span class="image fit-ish"><img src="images/knowledge-base-gen.png" /></span>
+				<p>In our generator, the following is obtained:</p>
+				<pre><code>defeasible(a(0),a(5)) defeasible(a(0),a(9)) defeasible(a(0),l0)</code></pre>
+				<pre><code>defeasible(a(1),a(5)) defeasible(a(1),a(0)) defeasible(a(1),-l0)</code></pre>
+				<pre><code>defeasible(a(2),l0) defeasible(a(2),a(4)) defeasible(a(2),a(7)) defeasible(a(2),a(1))</code></pre>
+
+				<p> The knowledge base generator was tested on its generation time. We explored different solver
+					configurations offered by clasp when running experiments.</p>
+			</section>
+
+			<section id="rci" class="main">
+				<header class="major">
+					<h2>Rational Closure interpreter</h2>
+				</header>
+				<p>
+					The aim of this section was to create a user-friendly interface that allows users to interact with
+					the ASP implementation of Rational Closure.
+					This tool allows users to use the reasoner without needing to learn about the ASP language.
+					Furthermore, the interpreter provides an explanation service of how the Rational Closure algorithm
+					works, and how
+					the conclusions are drawn. The interpreter was implemented using the PyQt web framework.
+				</p>
+
+				<p>The Rational Closure Interpreter (RCI) is developed in the PyQt framework, and adheres to the
+					Model-View-Controller,
+					Multi-tier Architecture pattern.
+
+				</p>
+				<span class="image mvc"><img src="images/mvc-view.png" /></span>
+				<p>
+					The RCI has the following features:
+				</p>
+
+
+				<ul>
+
+					<li>Allow users to input a knowledge base manually, upload from disk, or generate one.</li>
+					<li>Allow users input a query to check for entailment.</li>
+				</ul>
+
+				<span class="image rci"><img src="images/RCI-interface.png" /></span>
+				
+				
+				<p>The source code for the RCI is publicly available on GitHub <a
+						href="https://github.com/SibusisoButhelezi/Rational-Closure-Interpreter">here</a>
+				</p>
+
+			</section>
+
+			<!-- Conclusions -->
+			<section id="conclusions" class="main">
+				<header class="major">
+					<h2>Conclusions</h2>
+				</header>
+				<ul><span class="image left"><img src="images/perry-knowledge.png" /></span>
+					<li>The recursive approach is the more ideal for implementing Rational Closure in ASP than the
+						search-based approach.</li>
+					<li>The recursive approach Rational Closure implementation in ASP is more efficient than the
+						existing imperative implementation.</li>
+				</ul>
+			</section>
+
+			<!-- Resourcess -->
+			<section id="resources" class="main special">
+				<header class="major">
+					<h2>Resources</h2>
+				</header>
+				<p>
+					For further project details, please see the following project documentation:
+				</p>
+				<ul class="features">
+					<!-- Sibus's output -->
+					<li>
+						<h3>Sibusiso Buthlezi</h3>
+						<ul class="actions fit">
+							<li><a href="files/SibusisoLiteratureReview.pdf" target="_blank" class="button">Literature
+									Review</a></li>
+						</ul>
+						<ul class="actions fit">
+							<li><a href="files/SibusisoFinalPaper.pdf" target="_blank" class="button">Project Paper</a>
+							</li>
+						</ul>
+					</li>
+					<!-- Racquel's output -->
+					<li>
+						<h3>Racquel Dennison</h3>
+						<ul class="actions fit">
+							<li><a href="files/RacquelLiteratureReview.pdf" target="_blank" class="button">Literature
+									Review</a></li>
+						</ul>
+						<ul class="actions fit">
+							<li><a href="files/RacquelFinalPaper.pdf" target="_blank" class="button">Project Paper</a>
+							</li>
+						</ul>
+					</li>
+					<!-- Jack's output -->
+					<li>
+						<h3>Jack Mabotja</h3>
+						<ul class="actions fit">
+							<li><a href="files/DCASP_MBTJAC003_Literature_Review.pdf" target="_blank"
+									class="button">Literature Review</a></li>
+						</ul>
+						<ul class="actions fit">
+							<li><a href="files/DCASP_MBTJAC003_Final_Paper.pdf" target="_blank" class="button">Project
+									Paper</a></li>
+						</ul>
+					</li>
+					<!-- Overall project resources -->
+					<li>
+						<h3>Overall Project</h3>
+						<ul class="actions fit">
+							<li><a href="files/Defeasible Conditionals Research Proposal.pdf" target="_blank"
+									class="button">Project Proposal</a></li>
+						</ul>
+						<ul class="actions fit">
+							<li><a href="files/Inspo Pics DCASP Poster.pdf" target="_blank" class="button">Project
+									Poster</a></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<!-- Team -->
+			<section id="team" class="main special">
+				<header class="major">
+					<h2>Team</h2>
+				</header>
+				<ul class="features">
+
+					<li>
+						<!-- Placeholder image: -->
+						<!-- Author: Sibusiso Buthelezi -->
+						<h2>Sibusiso Buthlezi</h2>
+						<h3>Author</h3>
+						<!-- <p>
 											<a href="mailto:bthsib016@myuct.ac.za" target="_blank">bthsib016@myuct.ac.za</a>
 										</p> -->
-										<div class="row aln-center">
-											<div class="col-2">
-												<a href="mailto:bthsib016@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
-											</div>
-											<div class="col-2">
-												<a href="https://github.com/SibusisoButhelezi" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
-											</div>
-											<div class="col-2">
-												<a href="https://www.linkedin.com/in/sibusiso-buthelezi-381202209" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
-											</div>
-										</div>
-									</li>
-									<!-- Author: Racquel Dennison -->
-									<li>
-										<!-- Placeholder image: -->
-										
-										<h2>Racquel Dennison</h2>
-										<h3>Author</h3>
-										<!-- <p>
+						<div class="row aln-center">
+							<div class="col-2">
+								<a href="mailto:bthsib016@myuct.ac.za" target="_blank"
+									class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+							</div>
+							<div class="col-2">
+								<a href="https://github.com/SibusisoButhelezi" target="_blank"
+									class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+							</div>
+							<div class="col-2">
+								<a href="https://www.linkedin.com/in/sibusiso-buthelezi-381202209" target="_blank"
+									class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+							</div>
+						</div>
+					</li>
+					<!-- Author: Racquel Dennison -->
+					<li>
+						<!-- Placeholder image: -->
+
+						<h2>Racquel Dennison</h2>
+						<h3>Author</h3>
+						<!-- <p>
 											<a href="mailto:rsstal002@myuct.ac.za" target="_blank">rsstal002@myuct.ac.za</a>
 										</p> -->
-										<div class="row aln-center">
-											<div class="col-2">
-												<a href="mailto:dnnrac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
-											</div>
-											<div class="col-2">
-												<a href="https://github.com/RacquelNinaDennison" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
-											</div>
-											<div class="col-2">
-												<a href="https://www.linkedin.com/in/racquel-nina-dennison/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
-											</div>
-										</div>
-									</li>
-									<!-- Author: Jack Mabotja -->
-									<li>
-										<!-- Placeholder image: -->
-										
-										<h2>Jack Mabotja</h2>
-										<h3>Author</h3>
-										<!-- <p>
+						<div class="row aln-center">
+							<div class="col-2">
+								<a href="mailto:dnnrac003@myuct.ac.za" target="_blank"
+									class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+							</div>
+							<div class="col-2">
+								<a href="https://github.com/RacquelNinaDennison" target="_blank"
+									class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+							</div>
+							<div class="col-2">
+								<a href="https://www.linkedin.com/in/racquel-nina-dennison/" target="_blank"
+									class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+							</div>
+						</div>
+					</li>
+					<!-- Author: Jack Mabotja -->
+					<li>
+						<!-- Placeholder image: -->
+
+						<h2>Jack Mabotja</h2>
+						<h3>Author</h3>
+						<!-- <p>
 											<a href="mailto:mbtjac003@myuct.ac.za" target="_blank">mbtjac003@myuct.ac.za</a>
 										</p> -->
-										<div class="row aln-center">
-											<div class="col-2">
-												<a href="mailto:mbtjac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
-											</div>
-											<div class="col-2">
-												<a href="https://github.com/Jack-Mab/dcasp" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
-											</div>
-											<div class="col-2">
-												<a href="https://www.linkedin.com/in/jack-mabotja/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
-											</div>
-										</div>
-									</li>
-									<!-- Supervisor: Tommie Meyer -->
-									<li>
-											<!-- Placeholder image: -->
-											
-											<h2>Tommie Meyer</h2>
-											<h3>Supervisor</h3>
-											<!-- <p>
+						<div class="row aln-center">
+							<div class="col-2">
+								<a href="mailto:mbtjac003@myuct.ac.za" target="_blank"
+									class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+							</div>
+							<div class="col-2">
+								<a href="https://github.com/Jack-Mab/dcasp" target="_blank"
+									class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+							</div>
+							<div class="col-2">
+								<a href="https://www.linkedin.com/in/jack-mabotja/" target="_blank"
+									class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+							</div>
+						</div>
+					</li>
+					<!-- Supervisor: Tommie Meyer -->
+					<li>
+						<!-- Placeholder image: -->
+
+						<h2>Tommie Meyer</h2>
+						<h3>Supervisor</h3>
+						<!-- <p>
 												<a href="mailto:tmeyer@cs.uct.ac.za" target="_blank">tmeyer@cs.uct.ac.za</a>
 											</p> -->
-											<div class="row aln-center">
-												<div class="col-2">
-													<a href="mailto:tmeyer@cs.uct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
-												</div>
-											</div>
-									</li>
-									<li>
-										<!-- Placeholder image: -->
-										
-										<h2>Jesse Heyninick</h2>
-										<h3>Supervisor</h3>
-										<div class="row aln-center">
-											<div class="col-2">
-												<a href="mailto:jesse.heyninck@ou.nl" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
-											</div>
-										</div>
-								</li>
-								</ul>
-							</section>
+						<div class="row aln-center">
+							<div class="col-2">
+								<a href="mailto:tmeyer@cs.uct.ac.za" target="_blank"
+									class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- Placeholder image: -->
 
-					</div>
+						<h2>Jesse Heyninick</h2>
+						<h3>Supervisor</h3>
+						<div class="row aln-center">
+							<div class="col-2">
+								<a href="mailto:jesse.heyninck@ou.nl" target="_blank"
+									class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</section>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h2>University of Cape Town,</h2>
-							<h2>Computer Science Department</h2>
-							<p>
-								This research was completed as part of the Computer Science Honours programme at the University of Cape Town.
-							</p>
-						</section>
-						<section>
-							<h2>Contact Details</h2>
-							<dl class="alt">
-								<dt>Address</dt>
-								<dd>Computer Science Building, 18 University Avenue North, Rondebosch, Cape Town, 7700</dd>
-								<dt>Phone</dt>
-								<dd>+27 (0)21 650 2663</dd>
-								<dt>Email</dt>
-								<dd><a href="mailto:dept@cs.uct.ac.za" target="_blank">dept@cs.uct.ac.za</a></dd>
-								<dt>Website</dt>
-								<dd><a href="https://www.cs.uct.ac.za/" target="_blank">https://www.cs.uct.ac.za/</a></dd>
-							</dl>
-						</section>
-						<p class="copyright">&copy; University of Cape Town. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
+		</div>
 
-			</div>
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>University of Cape Town,</h2>
+				<h2>Computer Science Department</h2>
+				<p>
+					This research was completed as part of the Computer Science Honours programme at the University of
+					Cape Town.
+				</p>
+			</section>
+			<section>
+				<h2>Contact Details</h2>
+				<dl class="alt">
+					<dt>Address</dt>
+					<dd>Computer Science Building, 18 University Avenue North, Rondebosch, Cape Town, 7700</dd>
+					<dt>Phone</dt>
+					<dd>+27 (0)21 650 2663</dd>
+					<dt>Email</dt>
+					<dd><a href="mailto:dept@cs.uct.ac.za" target="_blank">dept@cs.uct.ac.za</a></dd>
+					<dt>Website</dt>
+					<dd><a href="https://www.cs.uct.ac.za/" target="_blank">https://www.cs.uct.ac.za/</a></dd>
+				</dl>
+			</section>
+			<p class="copyright">&copy; University of Cape Town. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+		</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	</div>
 
-	</body>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
