@@ -42,8 +42,8 @@ img {
 }
 .highlighted-note {
 	/* background-color: #ffff99; */
-	background-color: #ffffed;
-	border-left: 4px solid #ffff99;
+	background-color: #e9ac88;
+	border-left: 4px solid #e39466;
 	padding: 10px;
 	margin: 10px 0;
 	border-radius: 4px;
@@ -52,6 +52,7 @@ img {
 .highlighted-note h3 {
 	margin-top: 0;
 	color: #333;
+
 }
 .highlighted-note p {
 	margin-bottom: 0;
