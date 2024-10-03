@@ -52,6 +52,7 @@
 				<li><a href="#objectives">Objectives</a></li>
 				<li><a href="#asp-rc">ASP Definition of Rational Closure</a></li>
 				<li><a href="#kbg">Knowledge base generator</a></li>
+				<li><a href="#rci">Rational Closure interpreter</a></li>
 				<li><a href="#conclusions">Conclusions</a></li>
 				<li><a href="#resources">Resources</a></li>
 				<li><a href="#team">Team</a></li>
@@ -221,23 +222,23 @@
 				</header>
 
 				<p>
-					Before Perry can understand what Answer Set Programming (ASP) is, he needs to understand what a
-					programming paradigm is.
 					A programming paradigm is a style of programming that defines the structure and elements of a
 					program. There are many
 					different programming paradigms, each with its own set of rules and conventions. Most programming
 					languages are based on
-					the imperative programming paradigm, which uses statements to change the state of a program.
-					However, Answer Set Programming
-					(ASP) is a declarative programming paradigm that uses logic to represent knowledge and solve
-					problems.
-					Below is the distinguishing features of a declarative programming paradigm and an imperative
-					programming paradigm:
+					the imperative programming paradigm, which explicitly defined the steps to take to arrive at a result, And 
+					uses statements to change the state of a program.
+					Answer Set Programming is a declarative programming paradigm that uses logic to represent knowledge and solve
+					problems. Instead of defining the steps to take to arrive at a result, ASP programs describe the problem to be 
+					solved, and what the solution should look like.
+				</p>	
+					
+				<p>
+					Below are some contrasting features of the imperative programming paradigm and the declarative programming paradigm:
 				</p>
 
 				<span class="image fit-ish"><img src="images/declarative-vs-imperative.png" /></span>
 
-				<!-- Can add a comparison between imperative and declarative programming here -->
 				<p>
 					Answer Set Programming (ASP) is a declarative programming paradigm that uses logic to represent
 					knowledge and solve problems.
@@ -248,31 +249,6 @@
 					facts to find a solution to the problem. Rules in ASP are of the following form:
 				</p>
 				<span class="image fit-ish"><img src="images/asp-rules.png" /></span>
-				<!-- =
-								<p>
-									The ASP solver uses a grounding process to convert the rules and facts into a propositional logic program. The solver then
-									uses a search algorithm to find the answer sets of the program. An answer set is a set of facts that satisfy the rules of the
-									program. The solver can then use these answer sets to find a solution to the problem.
-								</p>
-								<p>
-									The grounding process can be computationally expensive, especially for large programs. The solver must generate all possible
-									combinations of the rules and facts to find the answer sets. This can be time-consuming and memory-intensive, especially for
-									programs with a large number of rules and facts.
-								</p>
-								<p>
-									The ASP solver uses a search algorithm to find the answer sets of the program. The search algorithm uses a backtracking
-									approach to explore the possible combinations of rules and facts. The solver starts with an empty set of facts and adds
-									rules and facts to the set until it finds an answer set. If the solver cannot find an answer set, it backtracks and tries
-									a different combination of rules and facts.
-								</p> -->
-
-				<!-- Can remove this -->
-				<!-- <p>
-									The ASP solver can use different search algorithms to find the answer sets of the program. The solver can use a depth-first
-									search algorithm to explore the possible combinations of rules and facts. The solver can also use a conflict-driven clause
-									learning algorithm to find the answer sets. The solver uses a conflict-driven clause learning algorithm to learn from the
-									conflicts in the program and find the answer sets.
-								</p> -->
 				<p>
 					Example: If Perry were to take all the facts they have learn't about mammals and platypus, they can
 					represent it as the following ASP rules:
@@ -472,21 +448,17 @@
 					the ASP implementation of Rational Closure.
 					This tool allows users to use the reasoner without needing to learn about the ASP language.
 					Furthermore, the interpreter provides an explanation service of how the Rational Closure algorithm
-					works, and how
-					the conclusions are drawn. The interpreter was implemented using the PyQt web framework.
+					works, and how the conclusions are drawn.
 				</p>
 
 				<p>The Rational Closure Interpreter (RCI) is developed in the PyQt framework, and adheres to the
-					Model-View-Controller,
-					Multi-tier Architecture pattern.
+					Model-View-Controller, Multi-tier Architecture pattern, offering a modular and scalable design.
 
 				</p>
 				<span class="image mvc"><img src="images/mvc-view.png" /></span>
 				<p>
-					The RCI has the following features:
+					 The RCI has the following features:
 				</p>
-
-
 				<ul>
 
 					<li>Allow users to input a knowledge base manually, upload from disk, or generate one.</li>
