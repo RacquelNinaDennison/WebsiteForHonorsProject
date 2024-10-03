@@ -228,10 +228,10 @@
 					program. There are many
 					different programming paradigms, each with its own set of rules and conventions. Most programming
 					languages are based on
-					the imperative programming paradigm, which explicitly defined the steps to take to arrive at a result, And 
+					the imperative programming paradigm, which explicitly defined the steps to take to arrive at a result, and 
 					uses statements to change the state of a program.
 					Answer Set Programming is a declarative programming paradigm that uses logic to represent knowledge and solve
-					problems. Instead of defining the steps to take to arrive at a result, ASP programs describe the problem to be 
+					problems. Instead of defining the steps taken to arrive at a result, ASP programs describe the problem to be 
 					solved, and what the solution should look like.
 				</p>	
 					
@@ -410,33 +410,34 @@
 								</header>
 								<h3>Racquel Dennison</h3>
 								</header>
-								<p>One of the aims was to define a set of rules that generate knowledge bases for testing our ASP definition of Rational Closure. A parameterised knowledge base was defined which allowed for generating knowledge bases with different features:</p>
+								<p>One of the aims was to define a set of rules that generate knowledge bases for testing our ASP definition of Rational Closure. A parameterised knowledge base was defined which allowed for generating knowledge bases with different features, such as:</p>
 								<ul>
 									
-									<li>Allow users to specify how many defeasible statements they would like in the knowledge bases.</li>
-									<li>Allow users to specify how many defeasible ranks they would like in the knowledge bases.</li>
+									<li>Allowing users to specify how many defeasible statements they would like in the knowledge bases.</li>
+									<li>Allowing users to specify how many defeasible ranks they would like in the knowledge bases.</li>
 									<span class="image right"><img src="images/perry-grr.png"/></span>
-									<li>Specify how the statements should be distributed among the ranks. Three distributions were defined:
+									<li>Alowing users to specify how the statements should be distributed among the ranks. Three distributions were defined:
 										<ul>
 											<li>Uniform: Statements are distributed evenly among ranks.</li>
 											<li>Random: A random assignment of the number of statements per rank.</li>
 											<li>Linear: The number of statements per rank grows linearly.</li>
 										</ul>
 									</li>
-									<li>Knowledge bases with the inclusion of classical statements.</li>
-									<li>Encoded classical statements as defeasible statements in the knowledge base.</li>
+									<li>Allowing for the generation of knowledge bases with the inclusion of classical statements.</li>
+									<li>Allowing for the generation of knowlege bases with encoded classical statements as defeasible statements.</li>
 								</ul>
-								
+								<br>
 								For example, given the ranked knowledge base:
 								
 								<span class="image fit-ish"><img src="images/knowledge-base-gen.png" /></span>
 								<p>In our generator, the following is obtained:</p>
-								<pre><code>defeasible(a(0),a(5)) defeasible(a(0),a(9)) defeasible(a(0),l0)</code></pre>
-								<pre><code>defeasible(a(1),a(5)) defeasible(a(1),a(0)) defeasible(a(1),-l0)</code></pre>
 								<pre><code>defeasible(a(2),l0) defeasible(a(2),a(4)) defeasible(a(2),a(7)) defeasible(a(2),a(1))</code></pre>
-
-				<p> The knowledge base generator was tested on its generation time. We explored different solver
-					configurations offered by clasp when running experiments.</p>
+								<pre><code>defeasible(a(1),a(5)) defeasible(a(1),a(0)) defeasible(a(1),-l0)</code></pre>
+								<pre><code>defeasible(a(0),a(5)) defeasible(a(0),a(9)) defeasible(a(0),l0)</code></pre>
+							<br> 
+							The format of statements produces are of the right format expected as input in our definition of Rational Closure. 
+						The knowledge base generator was tested on its generation time. We explored different solver
+					configurations offered by clasp when running experiments.
 			</section>
 
 			<section id="rci" class="main">
