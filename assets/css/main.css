@@ -42,8 +42,8 @@ img {
 }
 .highlighted-note {
 	/* background-color: #ffff99; */
-	background-color: #ffffed;
-	border-left: 4px solid #ffff99;
+	background-color: #e9ac88;
+	border-left: 4px solid #e39466;
 	padding: 10px;
 	margin: 10px 0;
 	border-radius: 4px;
@@ -52,6 +52,7 @@ img {
 .highlighted-note h3 {
 	margin-top: 0;
 	color: #333;
+
 }
 .highlighted-note p {
 	margin-bottom: 0;
@@ -2548,9 +2549,10 @@ input, select, textarea {
 
 	ul {
 		list-style: disc;
-		margin: 0 0 2em 0;
+		margin: 0 0 0 0;
 		padding-left: 1em;
 	}
+
 
 		ul li {
 			padding-left: 0.5em;
@@ -2660,6 +2662,7 @@ input, select, textarea {
 
 		ul.actions.fit {
 			width: calc(100% + 1em);
+
 		}
 
 			ul.actions.fit li {
@@ -2796,7 +2799,9 @@ input, select, textarea {
 	footer.major {
 		margin-top: 3em;
 	}
-
+.buttonspace{
+	margin-bottom: 1em;
+}
 	@media screen and (max-width: 736px) {
 
 		header.major {

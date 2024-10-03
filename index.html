@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>Defeasible Conitions in Answer Set Programming</title>
+	<title>Defeasible Conditionals in Answer Set Programming</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -51,7 +51,7 @@
 				<li><a href="#background">Background</a></li>
 				<li><a href="#objectives">Objectives</a></li>
 				<li><a href="#asp-rc">ASP Definition of Rational Closure</a></li>
-				<li><a href="#kbg">Knowledge base generator</a></li>
+				<li><a href="#kbg">Knowledge Base Generator</a></li>
 				<li><a href="#rci">Rational Closure interpreter</a></li>
 				<li><a href="#conclusions">Conclusions</a></li>
 				<li><a href="#resources">Resources</a></li>
@@ -71,9 +71,9 @@
 
 					Knowledge representation and reasoning is a branch of Artifical Intelligence which uses logic to
 					represent knowledge about the world.
-					Automated reasoning methods are used to draw new conclusions from a set of known knowledge.
+					Automated reasoning methods are used to draw new conclusions from a set of known statements.
 					Classical reasoning systems were
-					traditionally used to draw conclusions from sets of statements. Classical reasoning systems are
+					traditionally used to draw conclusions from knowledge bases. Classical reasoning systems are
 					monotonic, which means that
 					all information is certain and adding new information will not retract conclusions previously drawn.
 				</p>
@@ -92,13 +92,15 @@
 					<span class="image left"><img src="images/perry-baby.png" /></span>
 				</p>
 				<p>
-					Defeasible (non-monotonic) reasoning systems would allow Perry to say "mammals typically give birth
+					Defeasible (non-monotonic) reasoning systems accomidates exceptional knowledge allowing Perry to say "mammals typically give birth
 					to live young".
 					When Perry concludes that "platypus do not give birth to live young", the system would retract its
 					previous conclusion
 					that "platypus do give birth to live young". Perry would still exist if they used a "common sense"
 					approach to reasoning.
-					This project explored defeasible entailment relations using Answer Set Programming (ASP)
+					
+					The aim of this project was to encode this common sense reasoning using Answer Set Programming (ASP). We focused on computing 
+					reasoning systems defined by the KLM framework. 
 				</p>
 
 			</section>
@@ -132,7 +134,7 @@
 					<span class="image right"><img src="images/prop-operators.png" /></span>
 				</p>
 				<p>
-					Perry uses the symbols p, m and ly to represent platypus, mammals and liveyoung, respectively. Perry
+					For example, Perry would use the symbols p, m and ly to represent platypus, mammals and liveyoung, respectively. Perry
 					then combines
 					these symbols using boolean operators to make the statements "mammals have liveyoung", "platypus are
 					mammals" and
@@ -148,7 +150,7 @@
 				</p>
 				<p>
 					<span class="image right"><img src="images/perry-exist.png" /></span>
-					Using truth tables (or more efficient semantic tableau methods), Perry can still logically conclude
+					Using truth tables (or more efficient semantic tableau methods), Perry can logically conclude
 					that
 					"platypus can give birth to liveyoung". But, Perry already knows that "platypus do not give birth to
 					liveyoung" and it is impossible for both
@@ -226,11 +228,9 @@
 					program. There are many
 					different programming paradigms, each with its own set of rules and conventions. Most programming
 					languages are based on
-					the imperative programming paradigm, which explicitly defines the steps to take to arrive at a result, and 
-					uses statements to change the state of a program.
-					Answer Set Programming is a declarative programming paradigm that uses logic to represent knowledge and solve
-					problems. Instead of defining the steps to take to arrive at a result, ASP programs describe the problem to be 
-					solved, and what the solution should look like.
+					the imperative programming paradigm, which explicitly defined the steps taken to arrive at a result. While the declarative 
+					paradigm defines what solutions of a problem should look like and not the steps taken to solve a problem. 
+					
 				</p>	
 					
 				<p>
@@ -246,12 +246,11 @@
 					facts. The rules are used to
 					define the problem and the facts are used to define the initial state of the problem. The ASP solver
 					then uses these rules and
-					facts to find a solution to the problem. Rules in ASP are of the following form:
+					facts to find solutions to the problem. Rules in ASP are of the following form:
 				</p>
 				<span class="image fit-ish"><img src="images/asp-rules.png" /></span>
 				<p>
-					Example: If Perry were to take all the facts they have learn't about mammals and platypus, they can
-					represent it as the following ASP rules:
+					Example: Perry can take all the facts about platypus and mammals and represent it using the following ASP rules:
 				</p>
 				<span class="image fit-ish"><img src="images/asp-example-perry.png" /></span>
 			</section>
@@ -266,8 +265,8 @@
 				<ul>
 					<li>Devise an implementation of Rational Closure based on ASP</li>
 					<li>Devise an implementation of a knowledge base generator based on ASP</li>
-					<li>Create an interpreter application to integrate Rational Closure and the knowledge base generator
-						to improve usability and understanding of Rational Closure</li>
+					<li>Create an interpreter application to interface the ASP implementation of Rational Closure and the Knowledge Base Generator. 
+						The aim of the application is to improve usability of Rational Closure and act as an explainer of Rational Closure entailment. </li>
 				</ul>
 				</p>
 
@@ -372,8 +371,8 @@
 					</div>
 					<figcaption class="caption">Impact of Rank Count on Base Rank Implementations</figcaption>
 				</figure>
-				<div class="highlighted-note">
-					<h3>Note!</h3>
+				<div class="highlighted-note" style="color:#fbf3ee;">
+					<h3 style="color:#fbf3ee;">Note!</h3>
 					<p>
 					<ul>
 						<li> Racquel also created a search-based implementation of Rational Closure in ASP.</li>
@@ -402,41 +401,40 @@
 			</section>
 
 
-			<section id="kbg" class="main">
-				<header class="major">
-					<h2>Knowledge Base Generator</h2>
-				</header>
-				<p>One of the aims was to define a set of rules that generate knowledge bases for testing our ASP
-					definition of Rational Closure. A parameterised knowledge base was defined which allowed for
-					generating knowledge bases with different features:</p>
-				<ul>
-
-					<li>Allow users to specify how many defeasible statements they would like in the knowledge bases.
-					</li>
-					<li>Allow users to specify how many defeasible ranks they would like in the knowledge bases.</li>
-
-					<li>Specify how the statements should be distributed among the ranks. Three distributions were
-						defined:
-						<ul>
-							<li>Uniform: Statements are distributed evenly among ranks.</li>
-							<li>Random: A random assignment of the number of statements per rank.</li>
-							<li>Linear: The number of statements per rank grows linearly.</li>
-						</ul>
-					</li>
-					<li>Knowledge bases with the inclusion of classical statements.</li>
-					<li>Encoded classical statements as defeasible statements in the knowledge base.</li>
-				</ul>
-
-				For example, given the ranked knowledge base:
-
-				<span class="image fit-ish"><img src="images/knowledge-base-gen.png" /></span>
-				<p>In our generator, the following is obtained:</p>
-				<pre><code>defeasible(a(0),a(5)) defeasible(a(0),a(9)) defeasible(a(0),l0)</code></pre>
-				<pre><code>defeasible(a(1),a(5)) defeasible(a(1),a(0)) defeasible(a(1),-l0)</code></pre>
-				<pre><code>defeasible(a(2),l0) defeasible(a(2),a(4)) defeasible(a(2),a(7)) defeasible(a(2),a(1))</code></pre>
-
-				<p> The knowledge base generator was tested on its generation time. We explored different solver
-					configurations offered by clasp when running experiments.</p>
+							<section id="kbg" class="main">
+								<header class="major">
+									<h2>Knowledge Base Generator</h2>
+								</header>
+								<h3>Racquel Dennison</h3>
+								</header>
+								<p>One of the aims was to define a set of rules that generate knowledge bases for testing our ASP definition of Rational Closure. A parameterised knowledge base was defined which allowed for generating knowledge bases with different features, such as:</p>
+								<ul>
+									
+									<li>Allowing users to specify how many defeasible statements they would like in the knowledge bases.</li>
+									<li>Allowing users to specify how many defeasible ranks they would like in the knowledge bases.</li>
+									<span class="image right"><img src="images/perry-grr.png"/></span>
+									<li>Alowing users to specify how the statements should be distributed among the ranks. Three distributions were defined:
+										<ul>
+											<li>Uniform: Statements are distributed evenly among ranks.</li>
+											<li>Random: A random assignment of the number of statements per rank.</li>
+											<li>Linear: The number of statements per rank grows linearly.</li>
+										</ul>
+									</li>
+									<li>Allowing for the generation of knowledge bases with the inclusion of classical statements.</li>
+									<li>Allowing for the generation of knowlege bases with encoded classical statements as defeasible statements.</li>
+								</ul>
+								<br>
+								For example, given the ranked knowledge base:
+								
+								<span class="image fit-ish"><img src="images/knowledge-base-gen.png" /></span>
+								<p>In our generator, the following is obtained:</p>
+								<pre><code>defeasible(a(2),l0) defeasible(a(2),a(4)) defeasible(a(2),a(7)) defeasible(a(2),a(1))</code></pre>
+								<pre><code>defeasible(a(1),a(5)) defeasible(a(1),a(0)) defeasible(a(1),-l0)</code></pre>
+								<pre><code>defeasible(a(0),a(5)) defeasible(a(0),a(9)) defeasible(a(0),l0)</code></pre>
+							<br> 
+							The format of statements produces are of the right format expected as input in our definition of Rational Closure. 
+						The knowledge base generator was tested on its generation time. We explored different solver
+					configurations offered by clasp when running experiments.
 			</section>
 
 			<section id="rci" class="main">
@@ -502,18 +500,18 @@
 
 			</section>
 
-			<!-- Conclusions -->
-			<section id="conclusions" class="main">
-				<header class="major">
-					<h2>Conclusions</h2>
-				</header>
-				<ul><span class="image left"><img src="images/perry-knowledge.png" /></span>
-					<li>The recursive approach is the more ideal for implementing Rational Closure in ASP than the
-						search-based approach.</li>
-					<li>The recursive approach Rational Closure implementation in ASP is more efficient than the
-						existing imperative implementation.</li>
-				</ul>
-			</section>
+						<!-- Conclusions -->
+							<section id="conclusions" class="main">
+								<header class="major">
+									<h2>Conclusions</h2>
+								</header>
+								<ul><span class="image left"><img src="images/perry-knowledge.png"/></span>
+									<li>The recursive approach is the more ideal for implementing Rational Closure in ASP than the search-based approach.</li>
+									<li>The recursive approach Rational Closure implementation in ASP is more efficient than the existing imperative implementation.</li>
+									<li> ASP was a well suited language to generate defeasible knowledge bases.</li>
+									<li> Using ASP when it comes to computing RC entailment provided a different prespective to abstracting the problem.</li>
+								</ul>
+							</section>
 
 			<!-- Resourcess -->
 			<section id="resources" class="main special">
@@ -527,7 +525,7 @@
 					<!-- Sibus's output -->
 					<li>
 						<h3>Sibusiso Buthlezi</h3>
-						<ul class="actions fit">
+						<ul class="actions fit buttonspace">
 							<li><a href="files/SibusisoLiteratureReview.pdf" target="_blank" class="button">Literature
 									Review</a></li>
 						</ul>
@@ -539,7 +537,7 @@
 					<!-- Racquel's output -->
 					<li>
 						<h3>Racquel Dennison</h3>
-						<ul class="actions fit">
+						<ul class="actions fit buttonspace">
 							<li><a href="files/RacquelLiteratureReview.pdf" target="_blank" class="button">Literature
 									Review</a></li>
 						</ul>
@@ -551,7 +549,7 @@
 					<!-- Jack's output -->
 					<li>
 						<h3>Jack Mabotja</h3>
-						<ul class="actions fit">
+						<ul class="actions fit buttonspace">
 							<li><a href="files/DCASP_MBTJAC003_Literature_Review.pdf" target="_blank"
 									class="button">Literature Review</a></li>
 						</ul>
@@ -563,7 +561,7 @@
 					<!-- Overall project resources -->
 					<li>
 						<h3>Overall Project</h3>
-						<ul class="actions fit">
+						<ul class="actions fit buttonspace">
 							<li><a href="files/Defeasible Conditionals Research Proposal.pdf" target="_blank"
 									class="button">Project Proposal</a></li>
 						</ul>
@@ -585,7 +583,7 @@
 					<li>
 						<!-- Placeholder image: -->
 						<!-- Author: Sibusiso Buthelezi -->
-						<h2>Sibusiso Buthlezi</h2>
+						<h2>Sibusiso Buthelezi</h2>
 						<h3>Author</h3>
 						<!-- <p>
 											<a href="mailto:bthsib016@myuct.ac.za" target="_blank">bthsib016@myuct.ac.za</a>
@@ -614,28 +612,25 @@
 						<!-- <p>
 											<a href="mailto:rsstal002@myuct.ac.za" target="_blank">rsstal002@myuct.ac.za</a>
 										</p> -->
-						<div class="row aln-center">
-							<div class="col-2">
-								<a href="mailto:dnnrac003@myuct.ac.za" target="_blank"
-									class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
-							</div>
-							<div class="col-2">
-								<a href="https://github.com/RacquelNinaDennison" target="_blank"
-									class="icon brands fa-github alt"><span class="label">GitHub</span></a>
-							</div>
-							<div class="col-2">
-								<a href="https://www.linkedin.com/in/racquel-nina-dennison/" target="_blank"
-									class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
-							</div>
-						</div>
-					</li>
-					<!-- Author: Jack Mabotja -->
-					<li>
-						<!-- Placeholder image: -->
-
-						<h2>Jack Mabotja</h2>
-						<h3>Author</h3>
-						<!-- <p>
+										<div class="row aln-center">
+											<div class="col-2">
+												<a href="mailto:dnnrac003@myuct.ac.za" target="_blank" class="icon web applications fa-envelope alt"><span class="label">Email</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://github.com/RacquelNinaDennison/honors-project-" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+											</div>
+											<div class="col-2">
+												<a href="https://www.linkedin.com/in/racquel-nina-dennison/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+											</div>
+										</div>
+									</li>
+									<!-- Author: Jack Mabotja -->
+									<li>
+										<!-- Placeholder image: -->
+										
+										<h2>Jack Mabotja</h2>
+										<h3>Author</h3>
+										<!-- <p>
 											<a href="mailto:mbtjac003@myuct.ac.za" target="_blank">mbtjac003@myuct.ac.za</a>
 										</p> -->
 						<div class="row aln-center">
@@ -672,7 +667,7 @@
 					<li>
 						<!-- Placeholder image: -->
 
-						<h2>Jesse Heyninick</h2>
+						<h2>Jesse Heyninck</h2>
 						<h3>Supervisor</h3>
 						<div class="row aln-center">
 							<div class="col-2">
@@ -706,10 +701,11 @@
 					<dt>Email</dt>
 					<dd><a href="mailto:dept@cs.uct.ac.za" target="_blank">dept@cs.uct.ac.za</a></dd>
 					<dt>Website</dt>
-					<dd><a href="https://www.cs.uct.ac.za/" target="_blank">https://www.cs.uct.ac.za/</a></dd>
+					<dd><a href="https://sit.uct.ac.za/" target="_blank">https://sit.uct.ac.za/</a></dd>
 				</dl>
 			</section>
-			<p class="copyright">&copy; University of Cape Town. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			<p class="copyright">&copy; University of Cape Town. </p>
+			<p class="copyright" >Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 		</footer>
 
 	</div>
